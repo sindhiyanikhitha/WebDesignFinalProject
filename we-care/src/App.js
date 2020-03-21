@@ -1,9 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import HomePage from './components/HomePage/HomePage'
-
-class App extends React.Component{
+import React from "react";
+// import logo from "./logo.svg";
+import "./App.css";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import HomePage from "./components/HomePage/HomePage";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+import Cart from "./components/cart/cart.component";
+import { Switch, Route } from "react-router-dom";
+class App extends React.Component {
   componentDidMount() {
     const script = document.createElement("script");
 
@@ -13,17 +18,20 @@ class App extends React.Component{
     document.body.appendChild(script);
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="App">
-      
-  
-  
-  
-    <HomePage></HomePage>
-    </div>
+        <Header></Header>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          {/* <Route path="/product" component={Product} /> */}
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route exact path="/cart" component={Cart} />
+        </Switch>
+        <Footer></Footer>
+      </div>
     );
   }
 }
-
 export default App;
