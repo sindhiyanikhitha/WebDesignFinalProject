@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css';
 import {Link} from 'react-router-dom';
 
+
 function Footer() {
     return(
       
@@ -39,12 +40,12 @@ function Footer() {
                   <h5 class="col_white_footermain pt2">Mail Us</h5>
                   <ul class="footer_ul_align">
                      <li>
-                        <a href="mailto:v.gouthamreddy999@gmail.com"><i class="fa fa fa-envelope fleft padding-right"></i> </a>
+                        <a href="mailto:wecareteam@gmail.com"><i class="fa fa fa-envelope fleft padding-right"></i> </a>
                         <p>
-                           800 Boylston St
-                           02199-8001 Boston,
+                           360 Huntington Avenue 
+                           Boston,
                            Massachusetts, MA-02115
-                           Telephone:<a href="tel:(857)-869-8670"> (857)-869-8670</a>
+                           Telephone:<a href="tel:(857)-869-7841"> (857)-869-7841</a>
                         </p>
                      </li>
                   </ul>
@@ -58,7 +59,7 @@ function Footer() {
                <li><a href="/services">Services</a></li>
                <li><a href="/contact">Contact</a></li>
             </ul>
-            <p class="text-center">Copyright @2020 We Care </p>
+            <p class="text-center">Copyright @ 2020 We Care </p>
             <ul class="social_footer_ul">
                <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
                <li><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>

@@ -32,7 +32,7 @@ function HomePage() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={carousel2}
+              src={carousel2} 
               alt="Third slide"
             />
 
@@ -45,6 +45,7 @@ function HomePage() {
             <img
               className="d-block w-100"
               src={carousel3}
+              width="100%"
               alt="Third slide"
             />
 
@@ -55,8 +56,9 @@ function HomePage() {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src={carousel4}
-              alt="Third slide"
+              src={carousel4} 
+              width="100%"
+              alt="Fourth slide"
             />
 
             <Carousel.Caption>

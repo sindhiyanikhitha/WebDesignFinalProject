@@ -2,7 +2,7 @@ footer {
 	margin-top: 50px;
 	width: 100%;
 	background-color: #000000;
-	min-height: 250px;
+	min-height: 100px;
 	padding: 10px 0 25px 0;
 }
 
@@ -16,6 +16,9 @@ footer p {
 	color: #CCC;
 	padding-bottom: 0;
 	margin-bottom: 8px;
+}
+.container {
+    min-height: 5em;
 }
 
 .mb10 {
@@ -50,9 +53,15 @@ footer p {
 	padding-right: 10px;
 }
 
+.col_white_footermain {
+	color: #FFF;
+}
+
 .bottom_border {
 	border-bottom: 1px solid #323f45;
-	padding-bottom: 20px;
+    padding-bottom: 20px;
+    height: 10px;
+    min-height: 15em;
 }
 
 .foote_bottom_ul_align {
@@ -111,6 +120,3 @@ footer p {
 	min-height: 70px;
 }
 
-.col_white_footermain {
-	color: #FFF;
-}
