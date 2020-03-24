@@ -17,7 +17,7 @@ footer p {
 	padding-bottom: 0;
 	margin-bottom: 8px;
 }
-.container {
+.containerfooter {
     min-height: 5em;
 }
 
@@ -60,7 +60,9 @@ footer p {
 .bottom_border {
 	border-bottom: 1px solid #323f45;
     padding-bottom: 20px;
-    height: 10px;
+	height: 10px;
+	max-width: 1140px;
+	margin: auto;
     min-height: 15em;
 }
 

@@ -8,7 +8,7 @@ function Footer() {
       
     
     <footer class="footer">
-         <div class="container bottom_border">
+         <div class="bottom_border">
             <div class="row divider">
                <div class=" col-sm-4 col-md  col-6 col">
                   <h5 class="col_white_footermain pt2">ABOUT</h5>
@@ -52,7 +52,7 @@ function Footer() {
                </div>
             </div>
          </div>
-         <div class="container">
+         <div class="containerfooter">
             <ul class="foote_bottom_ul_align">
                <li><a href="/">Home</a></li>
                <li><a href="/aboutus">About</a></li>
