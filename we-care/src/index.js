@@ -17,7 +17,7 @@ import setAuthToken from "./utils/setAuthToken";
 // import '../node_modules/jquery/dist/jquery';
 // import '../node_modules/bootstrap/dist/js/bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-//import '../node_modules/font-awesome/css/font-awesome.css';
+import '../node_modules/font-awesome/css/font-awesome.css';
 
 
 // Check for token to keep user logged in

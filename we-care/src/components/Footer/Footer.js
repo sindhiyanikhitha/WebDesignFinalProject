@@ -7,7 +7,7 @@ function Footer() {
       
     
     <footer class="footer">
-         <div class="container bottom_border">
+         <div class="bottom_border">
             <div class="row divider">
                <div class=" col-sm-4 col-md  col-6 col">
                   <h5 class="col_white_footermain pt2">ABOUT</h5>
@@ -39,19 +39,19 @@ function Footer() {
                   <h5 class="col_white_footermain pt2">Mail Us</h5>
                   <ul class="footer_ul_align">
                      <li>
-                        <a href="mailto:v.gouthamreddy999@gmail.com"><i class="fa fa fa-envelope fleft padding-right"></i> </a>
+                        <a href="mailto:wecareteam@gmail.com"><i class="fa fa fa-envelope fleft padding-right"></i> </a>
                         <p>
                            800 Boylston St
                            02199-8001 Boston,
                            Massachusetts, MA-02115
-                           Telephone:<a href="tel:(857)-869-8670"> (857)-869-8670</a>
+                           Telephone:<a href="tel:(857)-869-7841"> (857)-869-7841</a>
                         </p>
                      </li>
                   </ul>
                </div>
             </div>
          </div>
-         <div class="container">
+         <div class="containerfooter">
             <ul class="foote_bottom_ul_align">
                <li><a href="/">Home</a></li>
                <li><a href="/aboutus">About</a></li>
