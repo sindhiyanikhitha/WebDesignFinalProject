@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Cart from "./components/cart/cart.component";
+import Blog from "./components/Blog/blog.component";
 import { Switch, Route } from "react-router-dom";
 class App extends React.Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/blog" component={Blog} />
         </Switch>
         <Footer></Footer>
       </div>
