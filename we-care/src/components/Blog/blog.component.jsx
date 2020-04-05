@@ -4,9 +4,10 @@ import { Grid, Container } from "@material-ui/core";
 import BlogHeader from "./BlogSubComponents/blogheader.component";
 import MainFeaturedPost from "./BlogSubComponents/mainFeaturedPost.component";
 import FeaturedPost from "./BlogSubComponents/featuredPost.component";
-import BlogPost from "./BlogSubComponents/BlogPost.component";
+// import BlogPost from "./BlogSubComponents/BlogPost.component";
+import PostButton from "./BlogSubComponents/createPostButton.component";
 import SideBar from "./BlogSubComponents/sidebar.component";
-const Blog = props => {
+const Blog = (props) => {
   return (
     <Container className="container" maxWidth="lg">
       <BlogHeader />
@@ -17,7 +18,7 @@ const Blog = props => {
       </Grid>
       <Grid container direction="row" spacing={3}>
         <Grid item xs={8}>
-          <BlogPost />
+          <PostButton />
         </Grid>
         <Grid item xs>
           <SideBar />
