@@ -12,6 +12,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
+    "emoji-mart": "^3.0.0",
     "font-awesome": "^4.7.0",
     "is-empty": "^1.2.0",
     "jquery": "^3.4.1",

@@ -5,7 +5,7 @@ import BlogHeader from "./BlogSubComponents/blogheader.component";
 import MainFeaturedPost from "./BlogSubComponents/mainFeaturedPost.component";
 import FeaturedPost from "./BlogSubComponents/featuredPost.component";
 // import BlogPost from "./BlogSubComponents/BlogPost.component";
-import PostButton from "./BlogSubComponents/createPostButton.component";
+import CreatePost from "./BlogSubComponents/createPostButton.component";
 import SideBar from "./BlogSubComponents/sidebar.component";
 const Blog = (props) => {
   return (
@@ -18,7 +18,7 @@ const Blog = (props) => {
       </Grid>
       <Grid container direction="row" spacing={3}>
         <Grid item xs={8}>
-          <PostButton />
+          <CreatePost />
         </Grid>
         <Grid item xs>
           <SideBar />
