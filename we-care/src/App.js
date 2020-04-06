@@ -9,7 +9,13 @@ import Login from "./components/Auth/Login";
 import Cart from "./components/cart/cart.component";
 import Blog from "./components/Blog/blog.component";
 import { Switch, Route } from "react-router-dom";
-class App extends React.Component {
+import logo from './logo.svg';
+import '../node_modules/jquery/dist/jquery';
+import '../node_modules/bootstrap/dist/js/bootstrap';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+
+class App extends React.Component{
   componentDidMount() {
     const script = document.createElement("script");
 
