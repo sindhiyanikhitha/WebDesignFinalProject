@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
-
+const cart = require('./routes/api/cart');
+const order = require('./routes/api/order');
+const products = require("./routes/api/productsData");
 
 
 const app = express();
@@ -36,6 +38,9 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
+app.use("/api/cart", cart);
+app.use("/api/order", order);
+app.use("/api/productsData",products);
 
 
 
