@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Register from "./components/Auth/Register";
@@ -22,19 +22,11 @@ import History from './components/Products/History';
 import Product from './components/Products/Product';
 import Products from './components/Products/Products';
 
-<<<<<<< HEAD
 
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/font-awesome/css/font-awesome.css";
-=======
- import '../node_modules/jquery/dist/jquery';
- import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
- import '../node_modules/bootstrap/dist/js/bootstrap';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import '../node_modules/font-awesome/css/font-awesome.css';
->>>>>>> nikhitha
 
 
 // Check for token to keep user logged in
@@ -56,17 +48,6 @@ if (localStorage.jwtToken) {
   }
 }
 
-const routing = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-);
-
-<<<<<<< HEAD
-ReactDOM.render(routing, document.getElementById("root"));
-=======
   const routing = (
     <Provider store={store}>
       <Router>
@@ -92,7 +73,6 @@ ReactDOM.render(routing, document.getElementById("root"));
   )
   
 ReactDOM.render(routing, document.getElementById('root'));
->>>>>>> nikhitha
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
