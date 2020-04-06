@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { Provider } from "react-redux";
 import './index.css';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import App from './App';
@@ -13,9 +14,16 @@ import store from './components/store';
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "./controller/authController";
 import setAuthToken from "./utils/setAuthToken";
+import BuyNow from './components/Products/BuyNow';
+import Cart from './components/Products/Cart';
+import Orders from './components/Products/Orders';
+import History from './components/Products/History';
+import Product from './components/Products/Product';
+import Products from './components/Products/Products';
 
-// import '../node_modules/jquery/dist/jquery';
-// import '../node_modules/bootstrap/dist/js/bootstrap';
+ import '../node_modules/jquery/dist/jquery';
+ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ import '../node_modules/bootstrap/dist/js/bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
 
@@ -50,6 +58,13 @@ if (localStorage.jwtToken) {
           {/* <Route path="/product" component={Product}/>       */}
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/products" component={Products} />
+          {/* <Route path="/products/product" component={Jobs}/>    */}
+          <Route path="/product" component={Product}/>  
+          <PrivateRoute exact path="/buyNow" component={BuyNow} /> 
+          <PrivateRoute exact path="/cart" component={Cart}/>
+        <PrivateRoute exact path="/orders" component={Orders}/>
+        <PrivateRoute exact path="/history" component={History}/>
         </Switch>
           <Footer></Footer>
         </div>

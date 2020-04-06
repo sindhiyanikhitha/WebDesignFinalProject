@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import '../node_modules/jquery/dist/jquery';
+import '../node_modules/bootstrap/dist/js/bootstrap';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import HomePage from './components/HomePage/HomePage'
 
 class App extends React.Component{
