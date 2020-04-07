@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.5",
+    "nodemon": "^2.0.2",
     "numeral": "^2.0.6",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
@@ -40,7 +41,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:server": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": "react-app"

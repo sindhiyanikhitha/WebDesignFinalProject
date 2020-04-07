@@ -1,36 +1,37 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
-const cart = require('./routes/api/cart');
-const order = require('./routes/api/order');
+const cart = require("./routes/api/cart");
+const order = require("./routes/api/order");
 const products = require("./routes/api/productsData");
-
 
 const app = express();
 
 app.use(cors());
-// Bodyparser middleware 
+// Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: false,
   })
 );
 app.use(bodyParser.json());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
-console.log(db);
+// console.log(db);
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
+  .connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -40,10 +41,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/cart", cart);
 app.use("/api/order", order);
-app.use("/api/productsData",products);
-
-
+app.use("/api/productsData", products);
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server: Up and running on port ${port} !`));
-
