@@ -1,31 +1,51 @@
 const mongoose = require("mongoose");
-const postSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: [true, "A post can only be created by user"],
-  },
-  caption: {
-    type: String,
-  },
-  image: {
-    type: String,
-  },
-  likes: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
-  comments: [
-    {
+const postSchema = new mongoose.Schema(
+  {
+    user: {
       type: mongoose.Schema.ObjectId,
-      ref: "Comment",
+      ref: "users",
+      required: [true, "A post can only be created by user"],
     },
-  ],
+    caption: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    usersLiked: [{ type: mongoose.Schema.ObjectId, ref: "users" }],
+    likes: {
+      type: Number,
+      default: 0,
+      min: [0, "There can not be negetive number of likes"],
+    },
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
+postSchema.virtual("comments", {
+  ref: "Comment",
+  foreignField: "post",
+  localField: "_id",
 });
-postSchema.pre(/^find/, function (this) {
+postSchema.post("save", async function () {
+  // await this.constructor.calculateLikes(this["_id"]);
+});
+postSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
     select: "name",
-  }).populate({
-    path: "comments",
-  });
+  })
+    .populate({
+      path: "comments",
+      select: "user text",
+    })
+    .populate({
+      path: "usersLiked",
+      select: "name",
+    });
+  next();
 });
 const Post = new mongoose.model("Post", postSchema);
 module.exports = Post;
