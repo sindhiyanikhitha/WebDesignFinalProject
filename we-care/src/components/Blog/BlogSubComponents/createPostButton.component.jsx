@@ -19,9 +19,10 @@ import DoneRoundedIcon from "@material-ui/icons/DoneRounded";
 import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import axios from "axios";
 const styles = (theme) => ({
   root: {
-    maxWidth: "90%"
+    maxWidth: "90%",
   },
   title: {
     fontWeight: "bold",
@@ -111,6 +112,22 @@ class CreatePost extends React.Component {
       text: this.state.text + emoji,
     });
   };
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData();
+    data.append("caption", this.state.text);
+    data.append("photo", document.getElementById("fileInput").files[0]);
+    try {
+      const res = await axios({
+        method: "POST",
+        url: "http://127.0.0.1:5000/api/post",
+        data,
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -128,7 +145,7 @@ class CreatePost extends React.Component {
           }
         ></CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <TextField
               placeholder="What's on your mind, User?"
               fullWidth
@@ -174,7 +191,9 @@ class CreatePost extends React.Component {
                     id="fileInput"
                     className={classes.fileInput}
                     accept="image/*"
+                    name="photo"
                     onInput={this.updateImage}
+                    name="photo"
                   />
                 </div>
                 {this.state.fileName.length === 0 ? null : (

@@ -4,25 +4,19 @@ import {
   CardContent,
   CardHeader,
   Avatar,
-  TextField,
   Typography,
-  InputAdornment,
-  Popover,
   CardMedia,
   CardActions,
   Button,
 } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import AddPhotoAlternateRoundedIcon from "@material-ui/icons/AddPhotoAlternateRounded";
-import DoneRoundedIcon from "@material-ui/icons/DoneRounded";
-import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded";
 import "emoji-mart/css/emoji-mart.css";
-import { Picker } from "emoji-mart";
 import { withStyles } from "@material-ui/core/styles";
-import newtour from "../../../assets/images/newtour.jpg";
+
 import ThumbUpRoundedIcon from "@material-ui/icons/ThumbUpRounded";
 import CommentRoundedIcon from "@material-ui/icons/CommentRounded";
 import ShareRoundedIcon from "@material-ui/icons/ShareRounded";
+import CommentField from "./commentField.component";
 const styles = (theme) => ({
   root: {
     maxWidth: "90%",
@@ -82,8 +76,10 @@ class Post extends React.Component {
         ></CardHeader>
         <CardMedia
           className={classes.media}
-          image={newtour}
           title="newTour"
+          image={
+            "/images/posts/post-5e8cf93b7b6c423544e019dc-1586363001177.jpeg"
+          }
         ></CardMedia>
         <CardContent>
           <Typography variant="body2">
@@ -125,8 +121,10 @@ class Post extends React.Component {
             Share
           </Button>
         </CardActions>
+        {this.state.isCommenting ? <CommentField /> : null}
       </Card>
     );
   }
 }
+
 export default withStyles(styles)(Post);

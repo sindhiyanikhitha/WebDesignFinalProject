@@ -4,7 +4,12 @@ const commentRouter = require("./comment-router");
 const router = express.Router();
 router
   .route("/")
-  .post(postController.createPost)
+  .post(
+    postController.protect,
+    postController.uploadPostPhoto,
+    postController.resizePostPhoto,
+    postController.createPost
+  )
   .get(postController.getAllPosts);
 router
   .route("/:id")

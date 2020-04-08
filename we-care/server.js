@@ -1,4 +1,6 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -10,9 +12,12 @@ const products = require("./routes/api/productsData");
 const postRouter = require("./routes/post-router");
 const commentRouter = require("./routes/comment-router");
 const globalErrorHandler = require("./src/controller/errorController");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(cors());
+app.use(cors({ credentials: true }));
+app.options("*", cors());
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -20,6 +25,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+// To read cookies
+app.use(cookieParser());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
