@@ -8,7 +8,8 @@ export const fetchPostStartAsync = () => {
     try {
       dispatch(fetchPostsStart());
       const res = await axios.get("/api/post");
-      dispatch(fetchPostsSuccess(res));
+      //   console.log("data", res.data.data.posts);
+      dispatch(fetchPostsSuccess(res.data.data.posts));
     } catch (err) {
       dispatch(fetchPostsFailure(err.message));
     }

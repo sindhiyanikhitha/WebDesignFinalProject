@@ -8,3 +8,7 @@ export const selectIsPostsFetching = createSelector(
   [selectPost],
   (post) => post.isFetching
 );
+export const selectPostsLoaded = createSelector(
+  [selectPost],
+  (post) => !!post.posts
+);

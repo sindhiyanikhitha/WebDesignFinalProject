@@ -59,7 +59,7 @@ class Post extends React.Component {
     });
   };
   render() {
-    const { classes } = this.props;
+    const { classes, post } = this.props;
     return (
       <Card className={classes.root}>
         <CardHeader
@@ -70,22 +70,22 @@ class Post extends React.Component {
           }
           title={
             <Typography variant="body1" className={classes.title}>
-              User Name
+              {post.user.name}
             </Typography>
           }
         ></CardHeader>
-        <CardMedia
-          className={classes.media}
-          title="newTour"
-          image={
-            "/images/posts/post-5e8cf93b7b6c423544e019dc-1586363001177.jpeg"
-          }
-        ></CardMedia>
-        <CardContent>
-          <Typography variant="body2">
-            An incredible tour with lots of fun and adventures 😍
-          </Typography>
-        </CardContent>
+        {post.image ? (
+          <CardMedia
+            className={classes.media}
+            title="newTour"
+            image={`/images/posts/${post.image}`}
+          ></CardMedia>
+        ) : null}
+        {post.caption ? (
+          <CardContent>
+            <Typography variant="body2">{post.caption}</Typography>
+          </CardContent>
+        ) : null}
         <CardActions className={classes.cardActions}>
           <Button
             variant="text"

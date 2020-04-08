@@ -4,7 +4,7 @@ import { Grid, Container } from "@material-ui/core";
 import BlogHeader from "./BlogSubComponents/blogheader.component";
 import MainFeaturedPost from "./BlogSubComponents/mainFeaturedPost.component";
 import FeaturedPost from "./BlogSubComponents/featuredPost.component";
-// import BlogPost from "./BlogSubComponents/BlogPost.component";
+import PostField from "./BlogSubComponents/postsField.component";
 import CreatePost from "./BlogSubComponents/createPostButton.component";
 import Post from "./BlogSubComponents/post.component";
 import SideBar from "./BlogSubComponents/sidebar.component";
@@ -12,6 +12,7 @@ import { fetchPostStartAsync } from "../../redux/post/post.action";
 import {
   selectIsPostsFetching,
   selectPostsData,
+  selectPostsLoaded,
 } from "../../redux/post/post.selectors";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -26,7 +27,9 @@ class Blog extends React.Component {
     fetchPostStartAsync();
   }
   render() {
-    const { posts, isFetching } = this.props;
+    const { posts, isFetching, postsLoaded } = this.props;
+    // console.log(posts, isFetching);
+    const PostsWithSpinner = WithSpinner(PostField);
     return (
       <Container className="container" maxWidth="lg">
         <BlogHeader />
@@ -42,13 +45,7 @@ class Blog extends React.Component {
                 <CreatePost />
               </Grid>
               <Grid item>
-                <Grid container direction="column" spacing={3}>
-                  {posts.map((post) => (
-                    <Grid item>
-                      <Post />
-                    </Grid>
-                  ))}
-                </Grid>
+                <PostsWithSpinner posts={posts} isLoading={!postsLoaded} />
               </Grid>
             </Grid>
           </Grid>
@@ -63,6 +60,7 @@ class Blog extends React.Component {
 const mapStateToprops = createStructuredSelector({
   isFetching: selectIsPostsFetching,
   posts: selectPostsData,
+  postsLoaded: selectPostsLoaded,
 });
 const mapDispatchStateToProps = (dispatch) => ({
   fetchPostStartAsync: () => dispatch(fetchPostStartAsync()),
