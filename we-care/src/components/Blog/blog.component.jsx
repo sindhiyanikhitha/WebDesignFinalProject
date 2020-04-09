@@ -35,6 +35,17 @@ class Blog extends React.Component {
     // console.log("fetchingLikes", isFetchingLikes);
     // console.log("likes", postsLiked);
     const PostsWithSpinner = WithSpinner(PostField);
+    const social = {
+      Facebook: { name: "Facebook", link: "https://www.facebook.com/" },
+      LinkedIn: {
+        name: "LinkedIn",
+        link: "https://www.linkedin.com/in/trivedhaudurthi/",
+      },
+      Twitter: {
+        name: "Twitter",
+        link: "https://twitter.com/home",
+      },
+    };
     return (
       <Container className="container" maxWidth="lg">
         <BlogHeader />
@@ -58,7 +69,7 @@ class Blog extends React.Component {
             </Grid>
           </Grid>
           <Grid item xs>
-            <SideBar />
+            <SideBar social={social} />
           </Grid>
         </Grid>
       </Container>

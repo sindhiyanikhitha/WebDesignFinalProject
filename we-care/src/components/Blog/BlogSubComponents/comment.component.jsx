@@ -19,7 +19,7 @@ const styles = (theme) => ({
     backgroundColor: "#B5CDF0",
   },
 });
-const Comment = ({ classes, ...otherProps }) => (
+const Comment = ({ classes, comment, ...otherProps }) => (
   <div className={classes.comment}>
     <Avatar className={classes.avatar}>
       <AccountCircleIcon />
@@ -29,7 +29,8 @@ const Comment = ({ classes, ...otherProps }) => (
       elevation={0}
       className={(classes.text, classes.paperSurface)}
     >
-      <Typography variant="body2">This is a sample comment</Typography>
+      <Typography variant="subtitle1">{comment.user.name}</Typography>
+      <Typography variant="body2">{comment.text}</Typography>
     </Paper>
   </div>
 );

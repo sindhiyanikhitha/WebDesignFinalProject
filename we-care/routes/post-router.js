@@ -19,5 +19,5 @@ router
 router
   .route("/:id/like")
   .patch(postController.protect, postController.handleLike);
-router.use("/:id/comment", commentRouter);
+router.use("/:id/comment", postController.protect, commentRouter);
 module.exports = router;

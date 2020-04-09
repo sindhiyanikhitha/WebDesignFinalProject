@@ -135,7 +135,6 @@ exports.handleLike = catchAsync(async (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
   // 1.Getting token and check if it's there
-  // console.log(req.headers);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -164,7 +163,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   //   );
   // }
   // Grant access to protected route
+  console.log(freshuser);
   req.user = freshuser;
-  res.locals.user = freshuser;
   next();
 });

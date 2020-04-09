@@ -9,6 +9,8 @@ exports.createComment = catchAsync(async (req, res, next) => {
   if (!req.body.post) {
     req.body.post = req.params.id;
   }
+  req.body.user = req.user.id;
+  console.log(req.body);
   const comment = await Comment.create(req.body);
   res.status(200).json({
     status: "success",
@@ -19,7 +21,11 @@ exports.createComment = catchAsync(async (req, res, next) => {
 });
 // Get All comments
 exports.getAllComments = catchAsync(async (req, res, next) => {
-  const comments = await Comment.find();
+  let id = {};
+  if (req.params.id) {
+    id = { post: req.params.id };
+  }
+  const comments = await Comment.find(id);
   res.status(200).json({
     status: "success",
     data: {

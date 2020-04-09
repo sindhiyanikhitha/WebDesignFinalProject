@@ -41,12 +41,14 @@ class Post extends React.Component {
       isLiked: false,
       isCommenting: false,
       isSharing: false,
+      comments: [],
     };
   }
   componentDidMount() {
-    const { isLiked, id } = this.props;
+    const { isLiked, id, post } = this.props;
     this.setState({
       isLiked,
+      comments: post.comments,
     });
   }
   likeAsync = async () => {
@@ -151,7 +153,9 @@ class Post extends React.Component {
             Share
           </Button>
         </CardActions>
-        {this.state.isCommenting ? <CommentField /> : null}
+        {this.state.isCommenting ? (
+          <CommentField postId={id} userName={post.user.name} />
+        ) : null}
       </Card>
     );
   }

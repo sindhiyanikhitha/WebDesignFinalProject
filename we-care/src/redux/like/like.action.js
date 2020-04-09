@@ -22,6 +22,7 @@ export const getLikesAync = () => {
       console.log("postsLiked", res);
       dispatch(getLikesSuccess(res.data.data.posts.postsLiked));
     } catch (err) {
+      console.log(err.stack);
       dispatch(getLikesFailure(err.message));
     }
   };
