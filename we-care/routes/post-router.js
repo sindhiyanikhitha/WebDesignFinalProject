@@ -16,6 +16,8 @@ router
   .get(postController.getPostById)
   .patch(postController.updatePost)
   .delete(postController.deletePost);
-router.route("/:id/like").patch(postController.handleLike);
+router
+  .route("/:id/like")
+  .patch(postController.protect, postController.handleLike);
 router.use("/:id/comment", commentRouter);
 module.exports = router;

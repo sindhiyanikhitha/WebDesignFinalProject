@@ -14,6 +14,8 @@ import {
   selectPostsData,
   selectPostsLoaded,
 } from "../../redux/post/post.selectors";
+import { selectIsFetchingLikes } from "../../redux/like/like.selectors";
+import { getLikesAync } from "../../redux/like/like.action";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import WithSpinner from "./withSpinner.component";
@@ -23,12 +25,15 @@ class Blog extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    const { fetchPostStartAsync } = this.props;
+    const { fetchPostStartAsync, getLikesAync } = this.props;
     fetchPostStartAsync();
+    // Get All posts this user liked
+    getLikesAync();
   }
   render() {
-    const { posts, isFetching, postsLoaded } = this.props;
-    // console.log(posts, isFetching);
+    const { posts, isFetching, postsLoaded, isFetchingLikes } = this.props;
+    // console.log("fetchingLikes", isFetchingLikes);
+    // console.log("likes", postsLiked);
     const PostsWithSpinner = WithSpinner(PostField);
     return (
       <Container className="container" maxWidth="lg">
@@ -45,7 +50,10 @@ class Blog extends React.Component {
                 <CreatePost />
               </Grid>
               <Grid item>
-                <PostsWithSpinner posts={posts} isLoading={!postsLoaded} />
+                <PostsWithSpinner
+                  posts={posts}
+                  isLoading={!(postsLoaded && isFetchingLikes)}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -61,8 +69,10 @@ const mapStateToprops = createStructuredSelector({
   isFetching: selectIsPostsFetching,
   posts: selectPostsData,
   postsLoaded: selectPostsLoaded,
+  isFetchingLikes: selectIsFetchingLikes,
 });
 const mapDispatchStateToProps = (dispatch) => ({
   fetchPostStartAsync: () => dispatch(fetchPostStartAsync()),
+  getLikesAync: () => dispatch(getLikesAync()),
 });
 export default connect(mapStateToprops, mapDispatchStateToProps)(Blog);

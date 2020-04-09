@@ -97,12 +97,14 @@ exports.deletePost = catchAsync(async (req, res, next) => {
 exports.handleLike = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
   // Since we are storing users as object id we need to convert to string to compare
-  const user = post.usersLiked.filter(
-    (el) => el["_id"].toString() === req.body.user
-  );
+  req.body.user = req.user["_id"].toString();
+  const user = post.usersLiked.filter((el) => {
+    return el["_id"].toString() === req.body.user;
+  });
   // console.log(user);
   let usersLiked = post.usersLiked;
   let likes = post.likes;
+  let liked = false;
   // If the user already liked it, remove like else add
   if (user.length === 1) {
     usersLiked = post.usersLiked.filter(
@@ -112,6 +114,7 @@ exports.handleLike = catchAsync(async (req, res, next) => {
   } else {
     usersLiked = [...post.usersLiked, req.body.user];
     likes += 1;
+    liked = true;
   }
   const updatedPost = await Post.findByIdAndUpdate(
     post["_id"],
@@ -125,6 +128,7 @@ exports.handleLike = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       post: updatedPost,
+      liked,
     },
   });
 });

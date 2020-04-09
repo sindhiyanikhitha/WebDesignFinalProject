@@ -12,7 +12,7 @@ import {
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "emoji-mart/css/emoji-mart.css";
 import { withStyles } from "@material-ui/core/styles";
-
+import axios from "axios";
 import ThumbUpRoundedIcon from "@material-ui/icons/ThumbUpRounded";
 import CommentRoundedIcon from "@material-ui/icons/CommentRounded";
 import ShareRoundedIcon from "@material-ui/icons/ShareRounded";
@@ -43,10 +43,35 @@ class Post extends React.Component {
       isSharing: false,
     };
   }
-  handleLike = (event) => {
+  componentDidMount() {
+    const { isLiked, id } = this.props;
     this.setState({
-      isLiked: !this.state.isLiked,
+      isLiked,
     });
+  }
+  likeAsync = async () => {
+    const { id } = this.props;
+    return await axios({
+      method: "PATCH",
+      url: `/api/post/${id}/like`,
+    });
+  };
+  handleLike = async (event) => {
+    try {
+      const { id } = this.props;
+      const res = await this.likeAsync();
+      await this.setState({
+        isLiked: res.data.data.liked,
+      });
+      const el = document.querySelector(`#likesCount_${id}`);
+      if (this.state.isLiked) {
+        el.textContent = `${el.textContent.split(" ")[0] * 1 + 1} Likes`;
+      } else {
+        el.textContent = `${el.textContent.split(" ")[0] * 1 - 1} Likes`;
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   handleComment = (event) => {
     this.setState({
@@ -59,7 +84,7 @@ class Post extends React.Component {
     });
   };
   render() {
-    const { classes, post } = this.props;
+    const { classes, post, id } = this.props;
     return (
       <Card className={classes.root}>
         <CardHeader
@@ -77,15 +102,20 @@ class Post extends React.Component {
         {post.image ? (
           <CardMedia
             className={classes.media}
-            title="newTour"
+            title="image"
             image={`/images/posts/${post.image}`}
           ></CardMedia>
         ) : null}
         {post.caption ? (
           <CardContent>
-            <Typography variant="body2">{post.caption}</Typography>
+            <Typography variant="body1">{post.caption}</Typography>
           </CardContent>
         ) : null}
+        <CardContent>
+          <Typography variant="subtitle2" id={`likesCount_${id}`}>
+            {post.likes} Likes
+          </Typography>
+        </CardContent>
         <CardActions className={classes.cardActions}>
           <Button
             variant="text"

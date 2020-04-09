@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const catchAsync = require("../../src/utils/catchAsync");
+const AppError = require("../../src/utils/appError");
+const postController = require("../../src/controller/postController");
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -122,4 +125,21 @@ router.get("/logout", (req, res, next) => {
     message: "loggedOut",
   });
 });
+router.get(
+  "/postsLiked",
+  postController.protect,
+  catchAsync(async (req, res, next) => {
+    const posts = await User.findOne({
+      _id: req.user.id,
+    })
+      .select("postsLiked")
+      .populate({ path: "postsLiked", select: "_id" });
+    res.status(200).json({
+      status: "success",
+      data: {
+        posts,
+      },
+    });
+  })
+);
 module.exports = router;

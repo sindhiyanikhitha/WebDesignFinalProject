@@ -19,7 +19,8 @@ import DoneRoundedIcon from "@material-ui/icons/DoneRounded";
 import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
-import axios from "axios";
+import { connect } from "react-redux";
+import { AddPostAyncStart } from "../../../redux/post/post.action";
 const styles = (theme) => ({
   root: {
     maxWidth: "90%",
@@ -114,19 +115,11 @@ class CreatePost extends React.Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
+    const { AddPostAyncStart } = this.props;
     const data = new FormData();
     data.append("caption", this.state.text);
     data.append("photo", document.getElementById("fileInput").files[0]);
-    try {
-      const res = await axios({
-        method: "POST",
-        url: "http://127.0.0.1:5000/api/post",
-        data,
-      });
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    }
+    AddPostAyncStart(data);
   };
   render() {
     const { classes } = this.props;
@@ -222,4 +215,9 @@ class CreatePost extends React.Component {
     );
   }
 }
-export default withStyles(styles)(CreatePost);
+const mapDispatchStateToProps = (dispatch) => ({
+  AddPostAyncStart: (data) => dispatch(AddPostAyncStart(data)),
+});
+export default withStyles(styles)(
+  connect(null, mapDispatchStateToProps)(CreatePost)
+);
