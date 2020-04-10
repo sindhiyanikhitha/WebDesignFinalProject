@@ -17,6 +17,7 @@ import ThumbUpRoundedIcon from "@material-ui/icons/ThumbUpRounded";
 import CommentRoundedIcon from "@material-ui/icons/CommentRounded";
 import ShareRoundedIcon from "@material-ui/icons/ShareRounded";
 import CommentField from "./commentField.component";
+import PostEdit from "../Account/postEdit.component";
 const styles = (theme) => ({
   root: {
     maxWidth: "90%",
@@ -88,75 +89,78 @@ class Post extends React.Component {
   render() {
     const { classes, post, id } = this.props;
     return (
-      <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar>
-              <AccountCircleIcon />
-            </Avatar>
-          }
-          title={
-            <Typography variant="body1" className={classes.title}>
-              {post.user.name}
-            </Typography>
-          }
-        ></CardHeader>
-        {post.image ? (
-          <CardMedia
-            className={classes.media}
-            title="image"
-            image={`/images/posts/${post.image}`}
-          ></CardMedia>
-        ) : null}
-        {post.caption ? (
+      <div className={classes.root}>
+        <Card>
+          <CardHeader
+            avatar={
+              <Avatar>
+                <AccountCircleIcon />
+              </Avatar>
+            }
+            title={
+              <Typography variant="body1" className={classes.title}>
+                {post.user.name}
+              </Typography>
+            }
+          ></CardHeader>
+          {post.image ? (
+            <CardMedia
+              className={classes.media}
+              title="image"
+              image={`/images/posts/${post.image}`}
+            ></CardMedia>
+          ) : null}
+          {post.caption ? (
+            <CardContent>
+              <Typography variant="body1">{post.caption}</Typography>
+            </CardContent>
+          ) : null}
           <CardContent>
-            <Typography variant="body1">{post.caption}</Typography>
+            <Typography variant="subtitle2" id={`likesCount_${id}`}>
+              {post.likes} Likes
+            </Typography>
           </CardContent>
-        ) : null}
-        <CardContent>
-          <Typography variant="subtitle2" id={`likesCount_${id}`}>
-            {post.likes} Likes
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Button
-            variant="text"
-            onClick={this.handleLike}
-            startIcon={
-              <ThumbUpRoundedIcon
-                color={this.state.isLiked ? "primary" : "action"}
-              />
-            }
-          >
-            Like
-          </Button>
-          <Button
-            variant="text"
-            onClick={this.handleComment}
-            startIcon={
-              <CommentRoundedIcon
-                color={this.state.isCommenting ? "primary" : "action"}
-              />
-            }
-          >
-            Comment
-          </Button>
-          <Button
-            variant="text"
-            onClick={this.handleShare}
-            startIcon={
-              <ShareRoundedIcon
-                color={this.state.isSharing ? "primary" : "action"}
-              />
-            }
-          >
-            Share
-          </Button>
-        </CardActions>
-        {this.state.isCommenting ? (
-          <CommentField postId={id} userName={post.user.name} />
-        ) : null}
-      </Card>
+          <CardActions className={classes.cardActions}>
+            <Button
+              variant="text"
+              onClick={this.handleLike}
+              startIcon={
+                <ThumbUpRoundedIcon
+                  color={this.state.isLiked ? "primary" : "action"}
+                />
+              }
+            >
+              Like
+            </Button>
+            <Button
+              variant="text"
+              onClick={this.handleComment}
+              startIcon={
+                <CommentRoundedIcon
+                  color={this.state.isCommenting ? "primary" : "action"}
+                />
+              }
+            >
+              Comment
+            </Button>
+            <Button
+              variant="text"
+              onClick={this.handleShare}
+              startIcon={
+                <ShareRoundedIcon
+                  color={this.state.isSharing ? "primary" : "action"}
+                />
+              }
+            >
+              Share
+            </Button>
+          </CardActions>
+          {this.state.isCommenting ? (
+            <CommentField postId={id} userName={post.user.name} />
+          ) : null}
+        </Card>
+        {/* {this.props.onClick ? <PostEdit /> : null} */}
+      </div>
     );
   }
 }

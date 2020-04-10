@@ -142,4 +142,18 @@ router.get(
     });
   })
 );
+router.get(
+  "/post",
+  postController.protect,
+  catchAsync(async (req, res, next) => {
+    const user = await User.findById(req.user.id).populate("posts");
+    const posts = user.posts;
+    res.status(200).json({
+      status: "success",
+      data: {
+        posts,
+      },
+    });
+  })
+);
 module.exports = router;

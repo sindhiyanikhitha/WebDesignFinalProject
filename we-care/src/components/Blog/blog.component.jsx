@@ -6,7 +6,6 @@ import MainFeaturedPost from "./BlogSubComponents/mainFeaturedPost.component";
 import FeaturedPost from "./BlogSubComponents/featuredPost.component";
 import PostField from "./BlogSubComponents/postsField.component";
 import CreatePost from "./BlogSubComponents/createPostButton.component";
-import Post from "./BlogSubComponents/post.component";
 import SideBar from "./BlogSubComponents/sidebar.component";
 import { fetchPostStartAsync } from "../../redux/post/post.action";
 import {

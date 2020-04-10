@@ -42,4 +42,9 @@ UserSchema.virtual("postsLiked", {
   foreignField: "usersLiked",
   localField: "_id",
 });
+UserSchema.virtual("posts", {
+  ref: "Post",
+  foreignField: "user",
+  localField: "_id",
+});
 module.exports = User = mongoose.model("users", UserSchema);

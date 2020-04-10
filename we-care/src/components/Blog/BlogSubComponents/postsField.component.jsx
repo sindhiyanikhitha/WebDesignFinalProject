@@ -4,12 +4,13 @@ import { Grid } from "@material-ui/core";
 import { connect } from "react-redux";
 import { selectPostsLiked } from "../../../redux/like/like.selectors";
 import { createStructuredSelector } from "reselect";
-const PostField = ({ posts, postsLiked, ...othetProps }) => {
+const PostField = ({ posts, postsLiked, onClick, ...othetProps }) => {
   let likedPostsId = null;
+
   if (postsLiked) {
     likedPostsId = postsLiked.map((post) => post.id);
   }
-  console.log(likedPostsId);
+  // console.log(likedPostsId);
   return (
     <Grid container direction="column" spacing={3}>
       {posts.map((post) => (
@@ -17,6 +18,7 @@ const PostField = ({ posts, postsLiked, ...othetProps }) => {
           <Post
             post={post}
             id={post.id}
+            onClick
             isLiked={likedPostsId ? likedPostsId.includes(post.id) : false}
           />
         </Grid>
