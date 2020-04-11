@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
 import { Navbar, Nav, NavDropdown, Modal } from 'react-bootstrap'
-import { NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../controller/authController";
 import { logoutUser } from "../../controller/authController";
-import classnames from "classnames";
-import { Link } from "react-router-dom";
+// import classnames from "classnames";
+// import { Link } from "react-router-dom";
 //import classnames from "classnames";
 
 class Header extends React.Component {
