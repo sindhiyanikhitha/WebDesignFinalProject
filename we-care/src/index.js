@@ -21,8 +21,10 @@ import Orders from "./components/Products/Orders";
 import History from "./components/Products/History";
 import Product from "./components/Products/Product";
 import Products from "./components/Products/Products";
+import BrowseDoctors from "./components/Doctors/BrowseDoctors";
 import Doctors from "./components/Doctors/Doctors";
 import Consult from "./components/Doctors/Consult";
+import Consultations from "./components/Doctors/Consultations";
 
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
@@ -61,8 +63,11 @@ const routing = (
           <Route path="/products" component={Products} />
           {/* <Route path="/products/product" component={Jobs}/>    */}
           <Route path="/product" component={Product} />
-          <Route path="/doctors" component={Doctors} />
-          <Route path="/consult" component={Consult} />
+          <Route path="/browseDoctors" component={BrowseDoctors} />
+          <PrivateRoute path="/doctors" component={Doctors} />
+          <PrivateRoute path="/consultations" component={Consultations} />
+          <PrivateRoute path="/consult" component={Consult} />
+          <PrivateRoute path="/consult/doctors" component={Consult} />
           <PrivateRoute exact path="/buyNow" component={BuyNow} />
           <PrivateRoute exact path="/cart" component={Cart} />
           <PrivateRoute exact path="/orders" component={Orders} />
