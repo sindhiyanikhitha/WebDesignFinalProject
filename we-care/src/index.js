@@ -15,12 +15,34 @@ import store from "./components/store";
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "./controller/authController";
 import setAuthToken from "./utils/setAuthToken";
+// <<<<<<< HEAD
 // import BuyNow from "./components/Products/BuyNow";
 // import Cart from "./components/Products/Cart";
 // import Orders from "./components/Products/Orders";
 // import History from "./components/Products/History";
 // import Product from "./components/Products/Product";
 // import Products from "./components/Products/Products";
+// ||||||| merged common ancestors
+// import BuyNow from "./components/Products/BuyNow";
+// import Cart from "./components/Products/Cart";
+// import Orders from "./components/Products/Orders";
+// import History from "./components/Products/History";
+// import Product from "./components/Products/Product";
+// import Products from "./components/Products/Products";
+
+// <<<<<<< HEAD
+
+// =======
+// import BuyNow from "./components/Products/BuyNow";
+// import Cart from "./components/Products/Cart";
+// import Orders from "./components/Products/Orders";
+// import History from "./components/Products/History";
+// import Product from "./components/Products/Product";
+// import Products from "./components/Products/Products";
+// import Doctors from "./components/Doctors/Doctors";
+// import Consult from "./components/Doctors/Consult";
+
+// >>>>>>> 64af573b38d38dae206fc1952375a52d152862e0
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
@@ -47,6 +69,7 @@ if (localStorage.jwtToken) {
 
 const routing = (
   <Provider store={store}>
+    {/* <<<<<<< HEAD */}
     <BrowserRouter>
       <App />
     </BrowserRouter>
@@ -54,6 +77,70 @@ const routing = (
 );
 
 ReactDOM.render(routing, document.getElementById("root"));
+// // ||||||| merged common ancestors
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   </Provider>
+// );
+
+// // <<<<<<< HEAD
+// ReactDOM.render(routing, document.getElementById("root"));
+// // =======
+//   const routing = (
+//     <Provider store={store}>
+//       <Router>
+//       <div>
+//       <Header></Header>
+//       <Switch>
+//           <Route exact path="/" component={App} />
+//           {/* <Route path="/product" component={Product}/>       */}
+//           <Route path="/login" component={Login} />
+//           <Route path="/register" component={Register} />
+//           <Route path="/products" component={Products} />
+//           {/* <Route path="/products/product" component={Jobs}/>    */}
+//           <Route path="/product" component={Product}/>
+//           <PrivateRoute exact path="/buyNow" component={BuyNow} />
+//           <PrivateRoute exact path="/cart" component={Cart}/>
+//         <PrivateRoute exact path="/orders" component={Orders}/>
+//         <PrivateRoute exact path="/history" component={History}/>
+//         </Switch>
+//           <Footer></Footer>
+//         </div>
+//       </Router>
+//     </Provider>
+//   )
+
+// ReactDOM.render(routing, document.getElementById('root'));
+// // >>>>>>> nikhitha
+// // =======
+//     <Router>
+//       <div>
+//         <Header></Header>
+//         <Switch>
+//           <Route exact path="/" component={App} />
+//           {/* <Route path="/product" component={Product}/>       */}
+//           <Route path="/login" component={Login} />
+//           <Route path="/register" component={Register} />
+//           <Route path="/products" component={Products} />
+//           {/* <Route path="/products/product" component={Jobs}/>    */}
+//           <Route path="/product" component={Product} />
+//           <Route path="/doctors" component={Doctors} />
+//           <Route path="/consult" component={Consult} />
+//           <PrivateRoute exact path="/buyNow" component={BuyNow} />
+//           <PrivateRoute exact path="/cart" component={Cart} />
+//           <PrivateRoute exact path="/orders" component={Orders} />
+//           <PrivateRoute exact path="/history" component={History} />
+
+//         </Switch>
+//         <Footer></Footer>
+//       </div>
+//     </Router>
+//   </Provider>
+// );
+
+// ReactDOM.render(routing, document.getElementById("root"));
+// >>>>>>> 64af573b38d38dae206fc1952375a52d152862e0
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

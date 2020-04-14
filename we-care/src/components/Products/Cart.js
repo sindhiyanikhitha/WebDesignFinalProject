@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Alert, Card, Button } from "react-bootstrap";
 import { logoutUser } from "../../controller/authController";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const CLIENT = {
   sandbox:
@@ -85,7 +85,7 @@ class Cart extends React.Component {
         .catch((err) => console.log(err));
       axios
         .post("/api/order", this.state.products)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           console.log("hihi");
           axios
@@ -135,7 +135,7 @@ class Cart extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.products.items.map((item) => {
+                    {this.state.products.items.map(item => {
                       return (
                         <tr key={item.productName}>
                           <td></td>

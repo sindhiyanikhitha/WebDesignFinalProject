@@ -1,15 +1,23 @@
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+// import Footer from "./components/Footer/Footer";
+// import Header from "./components/Header/Header";
 import HomePage from "./components/HomePage/HomePage";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+import Footer from "./components/Footer/Footer";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Header from "./components/Header/Header";
 import Cart from "./components/cart/cart.component";
 import Blog from "./components/Blog/blog.component";
 import UserAccount from "./components/Blog/Account/userAccount.component";
 import { Switch, Route } from "react-router-dom";
+import BuyNow from "./components/Products/BuyNow";
+import Orders from "./components/Products/Orders";
+import History from "./components/Products/History";
+import Product from "./components/Products/Product";
+import Products from "./components/Products/Products";
 import logo from "./logo.svg";
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
@@ -40,9 +48,15 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route path="/product" component={Product} /> */}
+          <Route path="/products" component={Products} />
+          {/* <Route path="/products/product" component={Jobs}/>    */}
+          <Route path="/product" component={Product} />
+          <PrivateRoute exact path="/buyNow" component={BuyNow} />
+          <PrivateRoute exact path="/cart" component={Cart} />
+          <PrivateRoute exact path="/orders" component={Orders} />
+          <PrivateRoute exact path="/history" component={History} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route exact path="/cart" component={Cart} />
           {/* Will allow only logged in users to access blog and account*/}
           <Route exact path="/blog" component={user ? Blog : Login} />
           <Route exact path="/account" component={user ? UserAccount : Login} />
