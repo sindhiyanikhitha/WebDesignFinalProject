@@ -97,17 +97,22 @@ class Header extends React.Component {
               <Nav.Link className="navLink" href="/jobs">
                 Jobs
               </Nav.Link>
-              <NavDropdown
-                title={<span className="navLink">Doctors</span>}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/consult">
-                  Consult Doctor
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/doctors">
-                  Browse Doctor
-                </NavDropdown.Item>
-              </NavDropdown>
+
+              {this.props.auth.isAuthenticated ? (
+                <NavDropdown
+                  title={<span className="navLink">Doctors</span>}
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item href="/consult">
+                    Consult Doctor
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/browseDoctors">
+                    Browse Doctor
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                {}
+              )}
             </Nav>
 
             {this.props.auth.isAuthenticated ? (
@@ -124,6 +129,9 @@ class Header extends React.Component {
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/history">
                   <i class="fa fa-server"></i> Your Orders
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/consultations">
+                  <i class="fas fa-hospital"></i> Your Consultations
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={this.onLogoutClick}>
                   <i class="fa fa-power-off"></i> Logout
