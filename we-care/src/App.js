@@ -25,10 +25,10 @@ class App extends React.Component {
 
     script.src = "https://platform.twitter.com/widgets.js";
     script.async = true;
-    const { fetchPostStartAsync, getLikesAync } = this.props;
+    // const { fetchPostStartAsync, getLikesAync } = this.props;
 
-    await fetchPostStartAsync();
-    await getLikesAync();
+    // await fetchPostStartAsync();
+    // await getLikesAync();
     document.body.appendChild(script);
   }
 

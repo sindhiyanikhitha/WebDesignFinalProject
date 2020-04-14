@@ -35,22 +35,22 @@ const styles = (theme) => ({
   },
 });
 class Post extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showComments: false,
-      isLiked: false,
+      isLiked: this.props.isLiked,
       isCommenting: false,
       isSharing: false,
-      comments: [],
+      comments: this.props.comments,
     };
   }
   componentDidMount() {
-    const { isLiked, id, post } = this.props;
-    this.setState({
-      isLiked,
-      comments: post.comments,
-    });
+    // const { isLiked, id, post } = this.props;
+    // this.setState({
+    //   isLiked,
+    //   comments: post.comments,
+    // });
   }
   likeAsync = async () => {
     const { id } = this.props;
