@@ -33,6 +33,24 @@ class Blog extends React.Component {
     const { posts, isFetching, postsLoaded, isFetchingLikes } = this.props;
     // console.log("fetchingLikes", isFetchingLikes);
     // console.log("likes", postsLiked);
+    const blogPosts = [
+      {
+        title: "Corona virus prevention",
+        content: "Cororna virus infromation",
+      },
+      {
+        title: "Corona virus USA updates",
+        content: "Cororna virus infromation",
+        image:
+          "https://www.cdc.gov/coronavirus/2019-ncov/images/2019-coronavirus.png",
+      },
+      {
+        title: "Corona virus global updates",
+        content: "Cororna virus infromation",
+        image:
+          "https://cdn.vox-cdn.com/thumbor/n42gibOtWjgED2EJsktC7t5Nn54=/0x0:5568x3712/1200x675/filters:focal(2299x1150:3189x2040)/cdn.vox-cdn.com/uploads/chorus_image/image/66227037/1201746525.jpg.8.jpg",
+      },
+    ];
     const PostsWithSpinner = WithSpinner(PostField);
     const social = {
       Facebook: { name: "Facebook", link: "https://www.facebook.com/" },
@@ -48,13 +66,13 @@ class Blog extends React.Component {
     return (
       <Container className="container" maxWidth="lg">
         <BlogHeader />
-        <MainFeaturedPost />
+        <MainFeaturedPost post={blogPosts[0]} />
         <Grid container direction="row" spacing={4}>
-          <FeaturedPost />
-          <FeaturedPost />
+          <FeaturedPost post={blogPosts[1]} />
+          <FeaturedPost post={blogPosts[2]} />
         </Grid>
         <Grid container direction="row" spacing={3}>
-          <Grid item xs={8}>
+          <Grid item md={8} xs={12}>
             <Grid container direction="column" spacing={4}>
               <Grid item>
                 <CreatePost />
@@ -67,7 +85,7 @@ class Blog extends React.Component {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs>
+          <Grid item md={4} xs={12}>
             <SideBar social={social} />
           </Grid>
         </Grid>

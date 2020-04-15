@@ -77,6 +77,9 @@ class CommentField extends React.Component {
         data: { text: this.state.text },
       });
       await this.getComments();
+      await this.setState({
+        text: "",
+      });
     } catch (err) {
       console.log(err);
     }

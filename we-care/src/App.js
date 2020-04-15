@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Header from "./components/Header/Header";
 import Cart from "./components/cart/cart.component";
 import Blog from "./components/Blog/blog.component";
+import BlogPost from "./components/Blog/BlogSubComponents/BlogPost.component";
 import UserAccount from "./components/Blog/Account/userAccount.component";
 import { Switch, Route } from "react-router-dom";
 import BuyNow from "./components/Products/BuyNow";
@@ -60,6 +61,7 @@ class App extends React.Component {
           {/* Will allow only logged in users to access blog and account*/}
           <Route exact path="/blog" component={user ? Blog : Login} />
           <Route exact path="/account" component={user ? UserAccount : Login} />
+          <Route exact path="/blogPost" component={user ? BlogPost : Login} />
         </Switch>
         <Footer></Footer>
       </div>
