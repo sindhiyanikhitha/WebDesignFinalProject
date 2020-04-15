@@ -2,28 +2,30 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./index.css";
-// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-// import Register from "./components/Auth/Register";
-// import Login from "./components/Auth/Login";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-// import Footer from "./components/Footer/Footer";
-// import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import store from "./components/store";
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "./controller/authController";
 import setAuthToken from "./utils/setAuthToken";
-
- import BuyNow from "./components/Products/BuyNow";
- import Cart from "./components/Products/Cart";
- import Orders from "./components/Products/Orders";
- import History from "./components/Products/History";
- import Product from "./components/Products/Product";
- import Products from "./components/Products/Products";
- import Doctors from "./components/Doctors/Doctors";
- import Consult from "./components/Doctors/Consult";
+import BuyNow from "./components/Products/BuyNow";
+import Cart from "./components/Products/Cart";
+import Orders from "./components/Products/Orders";
+import History from "./components/Products/History";
+import Product from "./components/Products/Product";
+import Products from "./components/Products/Products";
+import BrowseDoctors from "./components/Doctors/BrowseDoctors";
+import Doctors from "./components/Doctors/Doctors";
+import Consult from "./components/Doctors/Consult";
+import Consultations from "./components/Doctors/Consultations";
+import CategoryDescription from "./components/Doctors/CategoryDescription";
 
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
@@ -79,7 +81,7 @@ const routing = (
   </Provider>
 );
 
- ReactDOM.render(routing, document.getElementById("root"));
+ReactDOM.render(routing, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
