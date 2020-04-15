@@ -27,6 +27,8 @@ import { getLikesAync } from "./redux/like/like.action";
 import { fetchPostStartAsync } from "./redux/post/post.action";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import Doctors from "./components/Doctors/Doctors";
+import Consult from "./components/Doctors/Consult";
 class App extends React.Component {
   async componentDidMount() {
     const script = document.createElement("script");
@@ -60,6 +62,11 @@ class App extends React.Component {
           {/* Will allow only logged in users to access blog and account*/}
           <Route exact path="/blog" component={user ? Blog : Login} />
           <Route exact path="/account" component={user ? UserAccount : Login} />
+          <Route path="/product" component={Product} />
+          <Route path="/doctors" component={Doctors} />
+          <Route path="/consult" component={Consult} />
+          <PrivateRoute exact path="/buyNow" component={BuyNow} />
+          <PrivateRoute exact path="/cart" component={Cart} />
         </Switch>
         <Footer></Footer>
       </div>
