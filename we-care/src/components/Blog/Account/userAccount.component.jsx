@@ -10,6 +10,7 @@ import WithSpinner from "../withSpinner.component";
 import PostField from "../BlogSubComponents/postsField.component";
 import { withStyles } from "@material-ui/core/styles";
 import { getPostsByUserAsync } from "../../../redux/postsByUser/userPosts.actions";
+import { getLikesAync } from "../../../redux/like/like.action";
 import {
   selectPostsByUser,
   selectIsLoadingPostsByUser,
@@ -32,14 +33,15 @@ class UserAccount extends React.Component {
       commentText: "",
     };
   }
-  async componentDidMount() {
-    const { getPostsByUserAsync } = this.props;
-    await getPostsByUserAsync();
+  componentDidMount() {
+    const { getPostsByUserAsync, getLikesAync } = this.props;
+    getLikesAync();
+    getPostsByUserAsync();
   }
   render() {
     const PostWithSpinner = WithSpinner(PostField);
     const { classes } = this.props;
-    const { postsByUser, isLoadingPostsByUser } = this.props;
+    const { postsByUser, isLoadingPostsByUser, isFetchingLikes } = this.props;
     return (
       <Grid
         container
@@ -52,7 +54,7 @@ class UserAccount extends React.Component {
           <PostWithSpinner
             posts={postsByUser}
             onClick
-            isLoading={!isLoadingPostsByUser}
+            isLoading={!(isLoadingPostsByUser && isFetchingLikes)}
           />
         </Grid>
       </Grid>
@@ -62,9 +64,11 @@ class UserAccount extends React.Component {
 const mapStateToProps = createStructuredSelector({
   postsByUser: selectPostsByUser,
   isLoadingPostsByUser: selectIsLoadingPostsByUser,
+  isFetchingLikes: selectIsFetchingLikes,
 });
 const mapDispatchStateToProps = (dispatch) => ({
   getPostsByUserAsync: () => dispatch(getPostsByUserAsync()),
+  getLikesAync: () => dispatch(getLikesAync()),
 });
 export default withStyles(styles)(
   connect(mapStateToProps, mapDispatchStateToProps)(UserAccount)

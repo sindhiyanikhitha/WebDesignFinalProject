@@ -9,6 +9,7 @@ const likeReducer = (state = INITIAL_STATE, action) => {
     case LikeActionTypes.GET_LIKES: {
       return {
         ...state,
+        postsLiked: null,
         isLoading: true,
       };
     }

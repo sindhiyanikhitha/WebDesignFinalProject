@@ -18,6 +18,10 @@ const postSchema = new mongoose.Schema(
       default: 0,
       min: [0, "There can not be negetive number of likes"],
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -45,6 +49,7 @@ postSchema.pre(/^find/, function (next) {
       path: "usersLiked",
       select: "name",
     });
+  this.sort("-createdAt");
   next();
 });
 const Post = new mongoose.model("Post", postSchema);

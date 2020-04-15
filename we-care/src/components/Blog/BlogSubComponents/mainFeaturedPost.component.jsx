@@ -2,7 +2,7 @@ import React from "react";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: "relative",
     backgroundColor: theme.palette.grey[800],
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
       "url(https://images.unsplash.com/photo-1584996608697-de5c757725f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center"
+    backgroundPosition: "center",
   },
   overlay: {
     position: "absolute",
@@ -20,15 +20,15 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "rgba(0,0,0,.3)"
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
     position: "relative",
     padding: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
-      paddingRight: 0
-    }
+      paddingRight: 0,
+    },
   },
   overlay: {
     position: "absolute",
@@ -36,18 +36,18 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "rgba(0,0,0,.3)"
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
     position: "relative",
     padding: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
-      paddingRight: 0
-    }
-  }
+      paddingRight: 0,
+    },
+  },
 }));
-const MainFeaturedPost = props => {
+const MainFeaturedPost = (props) => {
   const classes = useStyles();
   const { post } = props;
   return (
@@ -61,12 +61,12 @@ const MainFeaturedPost = props => {
               color="inherit"
               gutterBottom
             >
-              {"post.title"}
+              {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {"post.description"}
+              {post.content}
             </Typography>
-            <Link to="#">{"continue reading..."}</Link>
+            <Link to="/blogPost">{"continue reading..."}</Link>
           </div>
         </Grid>
       </Grid>

@@ -120,6 +120,12 @@ class CreatePost extends React.Component {
     data.append("caption", this.state.text);
     data.append("photo", document.getElementById("fileInput").files[0]);
     AddPostAyncStart(data);
+    this.setState({
+      text: "",
+      fileName: "",
+      renderEmoji: false,
+      anchorEl: null,
+    });
   };
   render() {
     const { classes } = this.props;
@@ -203,6 +209,11 @@ class CreatePost extends React.Component {
                 variant="extended"
                 size="small"
                 className={classes.fab}
+                disabled={
+                  !(
+                    this.state.text.length > 0 || this.state.fileName.length > 0
+                  )
+                }
                 type="submit"
               >
                 <DoneRoundedIcon className={classes.extendedIcon} />
