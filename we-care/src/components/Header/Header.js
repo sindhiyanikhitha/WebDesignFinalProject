@@ -101,21 +101,17 @@ class Header extends React.Component {
                 Jobs
               </Nav.Link>
 
-              {this.props.auth.isAuthenticated ? (
-                <NavDropdown
-                  title={<span className="navLink">Doctors</span>}
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item href="/consult">
-                    Consult Doctor
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/browseDoctors">
-                    Browse Doctor
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                {}
-              )}
+              <NavDropdown
+                title={<span className="navLink">Doctors</span>}
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item href="/consult">
+                  Consult Doctor
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/browseDoctors">
+                  Browse Doctor
+                </NavDropdown.Item>
+              </NavDropdown>
             </Nav>
 
             {this.props.auth.isAuthenticated ? (
