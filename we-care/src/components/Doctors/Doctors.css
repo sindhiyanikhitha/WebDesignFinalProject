@@ -158,3 +158,19 @@ ul {
   font-size: 30px !important;
   margin: 20px;
 }
+
+.browse_link {
+  color: blue !important;
+}
+
+.image_wrapper_doctor {
+  height: 40vh;
+  overflow: hidden;
+}
+
+.browse_description {
+  text-align: left !important;
+}
+.browse_image {
+  width: 50%;
+}
