@@ -5,7 +5,7 @@ import {
   Elements,
   CardElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { Alert } from "react-bootstrap";
@@ -21,14 +21,14 @@ const CARD_ELEMENT_OPTIONS = {
       fontSmoothing: "antialiased",
       fontSize: "16px",
       "::placeholder": {
-        color: "#aab7c4"
-      }
+        color: "#aab7c4",
+      },
     },
     invalid: {
       color: "#fa755a",
-      iconColor: "#fa755a"
-    }
-  }
+      iconColor: "#fa755a",
+    },
+  },
 };
 
 const CheckoutForm = ({ UserId, success }) => {
@@ -38,16 +38,16 @@ const CheckoutForm = ({ UserId, success }) => {
   const [isPaymentSuccess, setPayment] = useState(false);
   const [isButtonDisabled, setButtonDisable] = useState(false);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setAmount(event.target.value);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setButtonDisable(true);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      card: elements.getElement(CardElement)
+      card: elements.getElement(CardElement),
     });
 
     if (!error) {
@@ -55,14 +55,14 @@ const CheckoutForm = ({ UserId, success }) => {
       try {
         const { data } = await axios.post("/api/charge", {
           id,
-          amount: amountValue * 1000
+          amount: amountValue * 1000,
         });
         if (data) {
           console.log(data);
           const amount = _.get(data, "confirm.amount");
           const AddAmount = await axios.post("/api/amount", {
             UserId: UserId,
-            amount: amount / 100
+            amount: amount / 100,
           });
           if (AddAmount) {
             setPayment(true);
@@ -78,32 +78,32 @@ const CheckoutForm = ({ UserId, success }) => {
   };
 
   return (
-      <>
-        {isPaymentSuccess ? (
-            <Alert variant="success" onClose={() => setPayment(false)} dismissible>
-              Payment was successful!
-            </Alert>
-        ) : (
-            ""
-        )}
-        <form
-            id="create-course-form"
-            onSubmit={handleSubmit}
-            style={{ maxWidth: "400px", margin: "0 auto" }}
-        >
-          <input
-              type="number"
-              // value={amountValue}
-              label="Enter Amount"
-              onChange={handleChange}
-              placeholder="Enter Amount"
-          />
-          <CardElement className="StripeElement" options={CARD_ELEMENT_OPTIONS} />
-          <button disabled={isButtonDisabled} className="myButton" type="submit">
-            Proceed to Add Money
-          </button>
-        </form>
-      </>
+    <>
+      {isPaymentSuccess ? (
+        <Alert variant="success" onClose={() => setPayment(false)} dismissible>
+          Payment was successful!
+        </Alert>
+      ) : (
+        ""
+      )}
+      <form
+        id="create-course-form"
+        onSubmit={handleSubmit}
+        style={{ maxWidth: "400px", margin: "0 auto" }}
+      >
+        <input
+          type="number"
+          // value={amountValue}
+          label="Enter Amount"
+          onChange={handleChange}
+          placeholder="Enter Amount"
+        />
+        <CardElement className="StripeElement" options={CARD_ELEMENT_OPTIONS} />
+        <button disabled={isButtonDisabled} className="myButton" type="submit">
+          Proceed to Add Money
+        </button>
+      </form>
+    </>
   );
 };
 
@@ -118,8 +118,8 @@ const Charge = ({ UserId }) => {
     async function fetchData() {
       const result = await axios.get("/api/amount?id=" + UserId, {
         params: {
-          UserID: UserId
-        }
+          UserID: UserId,
+        },
       });
       setBalance(_.get(result, "data.message.amount", "0"));
     }
@@ -132,17 +132,17 @@ const Charge = ({ UserId }) => {
   }
 
   return (
-      <>
-        <h6 className="h6">Available Balance: ${availableBalance}</h6>
-        <Elements stripe={stripePromise}>
-          <CheckoutForm
-              UserId={UserId}
-              success={() => {
-                setStatus("success");
-              }}
-          />
-        </Elements>
-      </>
+    <>
+      <h6 className="h6">Available Balance: ${availableBalance}</h6>
+      <Elements stripe={stripePromise}>
+        <CheckoutForm
+          UserId={UserId}
+          success={() => {
+            setStatus("success");
+          }}
+        />
+      </Elements>
+    </>
   );
 };
 

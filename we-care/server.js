@@ -15,6 +15,8 @@ const amount = require("./routes/api/amount");
 const commentRouter = require("./routes/comment-router");
 const globalErrorHandler = require("./src/controller/errorController");
 const cookieParser = require("cookie-parser");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
 const app = express();
 
 app.use(cors());
@@ -29,6 +31,9 @@ app.use(
 app.use(bodyParser.json());
 // To read cookies
 app.use(cookieParser());
+// To prevent NoSQL injection and xss
+app.use(mongoSanitize());
+app.use(xss());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
@@ -53,8 +58,8 @@ app.use("/api/users", users);
 app.use("/api/cart", cart);
 app.use("/api/order", order);
 app.use("/api/productsData", products);
-app.use("/api/charge",charge);
-app.use("/api/amount",amount);
+app.use("/api/charge", charge);
+app.use("/api/amount", amount);
 app.use("/api/post", postRouter);
 app.use("/api/comment", commentRouter);
 // For the Routes which are not implemented Yet
