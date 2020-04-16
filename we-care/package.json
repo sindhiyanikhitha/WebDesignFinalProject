@@ -22,6 +22,7 @@
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "prettier": "^2.0.4",
+    "query-string": "^6.12.1",
     "react": "^16.13.1",
     "react-async-script-loader": "^0.3.0",
     "react-bootstrap": "^1.0.0-beta.17",
@@ -54,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.7"
   }
 }
