@@ -5,16 +5,17 @@ import * as numeral from "numeral";
 import PaypalButton from "../../components/Products/pay";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Alert, Card, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { logoutUser } from "../../controller/authController";
+import PayWithWallet from "../Wallet/PayWithWallet";
 // import { Link } from "react-router-dom";
 
 const CLIENT = {
   sandbox:
-    "AfMLYiccAHh8T2aKAjXl0QaHEArR7XS71urdR6tSXFewsmxWiDiFk_cvexaZYeoQMAN-kjwtGxPodcuU",
+    "AfMLYiccAHh8T2aKAjXl0QaHEArR7XS71urdR6tSXFewsmxWiDiFk_cvexaZYeoQMAN-kjwtGxPodcuU"
 };
 const ENV = "sandbox";
-const tot = 0;
+// const tot=0;
 
 class Cart extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Cart extends React.Component {
       products: [],
       cartExists: false,
       cartTotal: 0,
-      showSuccess: false,
+      showSuccess: false
     };
     this.getCartsData();
   }
@@ -35,19 +36,19 @@ class Cart extends React.Component {
       var add = 0;
       await axios
         .get("/api/cart?id=" + this.props.auth.user.id)
-        .then((response) => {
+        .then(response => {
           console.log(response);
-          if (response.data != "") {
+          if (response.data !== "") {
             this.setState({ products: response.data, cartExists: true });
-            this.state.products.items.map((item) => {
-              add = add + item.productPrice * item.quantity;
+            this.state.products.items.map(item => {
+              return (add = add + item.productPrice * item.quantity);
             });
             this.setState({ cartTotal: numeral(add).format("$0,0.00") });
           } else {
             this.setState({ cartExists: false });
           }
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     } else {
       this.props.history.push("/login");
     }
@@ -58,31 +59,31 @@ class Cart extends React.Component {
   };
 
   deleteCart() {
-    axios.delete("/api/cart?id=" + this.state.products._id).then((response) => {
+    axios.delete("/api/cart?id=" + this.state.products._id).then(response => {
       this.setState({
         products: [],
         cartExists: false,
         cartTotal: 0,
-        showSuccess: false,
+        showSuccess: false
       });
     });
   }
 
   render() {
-    const onSuccess = (payment) => {
+    const onSuccess = payment => {
       console.log("Successful payment!", payment);
       this.setState({ showSuccess: true });
       const oData = {
         email: this.props.auth.user.email,
         name: this.props.auth.user.name,
-        products: this.state.products,
+        products: this.state.products
       };
       axios
         .post("/api/sendordermail", oData)
-        .then((response) => {
+        .then(response => {
           console.log(response);
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
       axios
         .post("/api/order", this.state.products)
         .then(response => {
@@ -90,21 +91,21 @@ class Cart extends React.Component {
           console.log("hihi");
           axios
             .delete("/api/cart?id=" + this.state.products._id)
-            .then((response) => {
+            .then(response => {
               this.setState({
                 products: [],
                 cartExists: false,
                 cartTotal: 0,
-                showSuccess: false,
+                showSuccess: false
               });
             });
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     };
 
-    const onError = (error) =>
+    const onError = error =>
       console.log("Erroneous payment OR failed to load script!", error);
-    const onCancel = (data) => console.log("Cancelled payment!", data);
+    const onCancel = data => console.log("Cancelled payment!", data);
 
     return (
       <div className="cartBg">
@@ -172,6 +173,11 @@ class Cart extends React.Component {
                 {this.tot}= {this.state.cartTotal}
               </p>
               {this.state.cartExists ? (
+                  <>
+                  <PayWithWallet
+                      onSuccess={onSuccess}
+                      total={this.state.cartTotal}
+                  />
                 <PaypalButton
                   className="btn btn-info"
                   client={CLIENT}
@@ -183,12 +189,13 @@ class Cart extends React.Component {
                   onError={onError}
                   onCancel={onCancel}
                 />
+                </>
               ) : (
                 []
               )}
               <button
                 type="Button"
-                className="empty"
+                // className="empty"
                 onClick={() => this.deleteCart()}
                 className="btn btn-danger"
                 disabled={!this.state.cartExists}
@@ -205,9 +212,12 @@ class Cart extends React.Component {
 }
 Cart.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
-export default connect(mapStateToProps, { logoutUser })(Cart);
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Cart);
