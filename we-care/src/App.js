@@ -21,6 +21,8 @@ import Product from "./components/Products/Product";
 import Products from "./components/Products/Products";
 import Wallet from "./components/Wallet/Wallet";
 import logo from "./logo.svg";
+import Join from './components/Join/Join';
+import Chat from './components/Chat/Chat';
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
@@ -67,6 +69,8 @@ class App extends React.Component {
           <Route path="/product" component={Product} />
           <Route path="/doctors" component={Doctors} />
           <Route path="/consult" component={Consult} />
+		  <Route path="/joinChat" component={Join} />
+		  <Route path="/chat" component={Chat} />
           <PrivateRoute exact path="/buyNow" component={BuyNow} />
           <PrivateRoute exact path="/cart" component={Cart} />
           <PrivateRoute path="/wallet" component={Wallet} />

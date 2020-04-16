@@ -94,7 +94,7 @@ class Header extends React.Component {
               <Nav.Link className="navLink" href="/blog">
                 Blog
               </Nav.Link>
-              <Nav.Link className="navLink" href="/chat">
+              <Nav.Link className="navLink" href="/joinChat">
                 Live Chat
               </Nav.Link>
               <Nav.Link className="navLink" href="/jobs">
