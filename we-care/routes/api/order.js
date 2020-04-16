@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const Stripe = require("stripe")
 
 
 // Load Order model
 const Order = require("../../models/Order");
+const stripe = new Stripe("sk_test_Mk9avksL3EnUDYsISBUcgggL00AhQwjn0P");
 
 router.post('/', (req, res) => {
+    console.log(req)
     const user = req.body.user;
     const orderTotal = req.body.total;
     const deliveryStatus = req.body.status;
@@ -45,5 +48,30 @@ router.delete('/', (req, res) => {
         .then(() => res.end())
         .catch((err) => res.send(err));
 });
+
+// router.post('/test1', async (req, res) => {
+//     console.log('test')
+//     const {id, amount} = req.body;
+//     try {
+//         const payment = await stripe.paymentIntents.create({
+//             amount,
+//             currency: "USD",
+//             description: "Delicious empanadas",
+//             payment_method: id,
+//             confirm: true
+//         });
+//
+//         console.log(payment);
+//
+//         return res.status(200).json({
+//             confirm: "abc123"
+//         });
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(400).json({
+//             message: error.message
+//         });
+//     }
+// });
 
 module.exports = router;

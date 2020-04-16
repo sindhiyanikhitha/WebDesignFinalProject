@@ -1,4 +1,6 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -8,10 +10,17 @@ const cart = require("./routes/api/cart");
 const order = require("./routes/api/order");
 const products = require("./routes/api/productsData");
 const doctors = require("./routes/api/doctors");
-
+const postRouter = require("./routes/post-router");
+const charge = require("./routes/api/charge");
+const amount = require("./routes/api/amount");
+const commentRouter = require("./routes/comment-router");
+const globalErrorHandler = require("./src/controller/errorController");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(cors());
+app.use(cors({ credentials: true }));
+app.options("*", cors());
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -19,13 +28,20 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+// To read cookies
+app.use(cookieParser());
 // DB Config
 const db = require("./config/keys").mongoURI;
 
-console.log(db);
+// console.log(db);
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB successfully connected"))
   .catch((err) => console.log(err));
 
@@ -40,5 +56,18 @@ app.use("/api/order", order);
 app.use("/api/productsData", products);
 app.use("/api/doctors", doctors);
 
+app.use("/api/charge", charge);
+app.use("/api/amount", amount);
+app.use("/api/post", postRouter);
+app.use("/api/comment", commentRouter);
+// For the Routes which are not implemented Yet
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl} on this server`,
+  });
+});
+// Global Error Middleware
+app.use(globalErrorHandler);
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server: Up and running on port ${port} !`));

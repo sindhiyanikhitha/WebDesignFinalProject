@@ -79,19 +79,22 @@ class Header extends React.Component {
               <Nav.Link className="navLink" href="/products">
                 Products
               </Nav.Link>
-              <NavDropdown
-                title={<span className="navLink">Services</span>}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>
-                <NavDropdown.Item href="/costestimation">
-                  Cost Estimation
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link className="navLink" href="/wallet">
+                Wallet
+              </Nav.Link>
+              {/*<NavDropdown*/}
+              {/*    title={<span className="navLink">Services</span>}*/}
+              {/*    id="basic-nav-dropdown"*/}
+              {/*>*/}
+              {/*  <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>*/}
+              {/*  <NavDropdown.Item href="/costestimation">*/}
+              {/*    Cost Estimation*/}
+              {/*  </NavDropdown.Item>*/}
+              {/*</NavDropdown>*/}
               <Nav.Link className="navLink" href="/blog">
                 Blog
               </Nav.Link>
-              <Nav.Link className="navLink" href="/chat">
+              <Nav.Link className="navLink" href="/joinChat">
                 Live Chat
               </Nav.Link>
               <Nav.Link className="navLink" href="/jobs">
