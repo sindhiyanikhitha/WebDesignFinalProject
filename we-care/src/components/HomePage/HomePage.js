@@ -6,7 +6,7 @@ import {
   // Button,
   Container,
   Row,
-  Col
+  Col,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import carousel1 from "../../assets/images/carouselN2.jpg";

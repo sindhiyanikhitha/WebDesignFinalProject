@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-// import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -89,22 +89,22 @@ function Footer() {
         <p class="text-center">Copyright @ 2020 We Care </p>
         <ul class="social_footer_ul">
           <li>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com" target="_blank">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com" target="_blank">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com" target="_blank">
               <i class="fa fa-linkedin"></i>
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com" target="_blank">
               <i class="fa fa-instagram"></i>
             </a>
           </li>
