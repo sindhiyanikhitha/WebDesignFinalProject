@@ -27,7 +27,7 @@ const BlogHeader = (props) => {
   return (
     <div>
       <Toolbar>
-        <Link>SUBSCRIBE</Link>
+        <Link to="#">SUBSCRIBE</Link>
         <Typography
           variant="h4"
           align="center"
@@ -36,7 +36,7 @@ const BlogHeader = (props) => {
         >
           BLOG
         </Typography>
-        <Link>ACCOUNT</Link>
+        <Link to="/account">ACCOUNT</Link>
       </Toolbar>
     </div>
   );
