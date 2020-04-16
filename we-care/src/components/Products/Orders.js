@@ -11,6 +11,7 @@ import { logoutUser } from "../../controller/authController";
 // import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { Alert } from "react-bootstrap";
+import PayWithWallet from "../Wallet/PayWithWallet";
 
 const CLIENT = {
   sandbox:
@@ -54,7 +55,6 @@ class Orders extends React.Component {
         .post("/api/order", this.state.ordersData)
         .then(response => {
           console.log(response);
-          console.log("hihi");
         })
         .catch(err => console.log(err));
     };
@@ -103,6 +103,10 @@ class Orders extends React.Component {
                       <p>Quantity: {this.state.products.quantity}</p>
                     </h3>
                     <br />
+                    <PayWithWallet
+                        onSuccess={onSuccess}
+                        total={this.state.products.price * this.state.products.quantity}
+                    />
                     <PaypalButton
                       client={CLIENT}
                       env={ENV}

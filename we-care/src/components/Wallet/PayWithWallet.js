@@ -31,7 +31,7 @@ const  PayWithWallet = ({onSuccess,total}) =>{
                 amount: -totalAmount*10,
             });
             if(DecreaseWalletAmount.status === 204){
-                alert("Successfully payed from wallet:Thanks")
+                // alert("Successfully payed from wallet:Thanks")
                 onSuccess()
             }
 

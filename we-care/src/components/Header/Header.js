@@ -68,154 +68,157 @@ class Header extends React.Component {
     const { user } = this.props.auth;
 
     return (
-      <div className="a">
-        <Navbar className="nav" expand="md" sticky="top">
-          <Navbar.Brand className="navbarBrand" href="/">
-            WE CARE
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link className="navLink" href="/products">
-                Products
-              </Nav.Link>
-              <NavDropdown
-                title={<span className="navLink">Services</span>}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>
-                <NavDropdown.Item href="/costestimation">
-                  Cost Estimation
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link className="navLink" href="/blog">
-                Blog
-              </Nav.Link>
-              <Nav.Link className="navLink" href="/chat">
-                Live Chat
-              </Nav.Link>
-              <Nav.Link className="navLink" href="/jobs">
-                Jobs
-              </Nav.Link>
+        <div className="a">
+          <Navbar className="nav" expand="md" sticky="top">
+            <Navbar.Brand className="navbarBrand" href="/">
+              WE CARE
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link className="navLink" href="/products">
+                  Products
+                </Nav.Link>
+                <Nav.Link className="navLink" href="/wallet">
+                  Wallet
+                </Nav.Link>
+                {/*<NavDropdown*/}
+                {/*    title={<span className="navLink">Services</span>}*/}
+                {/*    id="basic-nav-dropdown"*/}
+                {/*>*/}
+                {/*  <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>*/}
+                {/*  <NavDropdown.Item href="/costestimation">*/}
+                {/*    Cost Estimation*/}
+                {/*  </NavDropdown.Item>*/}
+                {/*</NavDropdown>*/}
+                <Nav.Link className="navLink" href="/blog">
+                  Blog
+                </Nav.Link>
+                <Nav.Link className="navLink" href="/chat">
+                  Live Chat
+                </Nav.Link>
+                <Nav.Link className="navLink" href="/jobs">
+                  Jobs
+                </Nav.Link>
+
+                {this.props.auth.isAuthenticated ? (
+                    <NavDropdown
+                        title={<span className="navLink">Doctors</span>}
+                        id="basic-nav-dropdown"
+                    >
+                      <NavDropdown.Item href="/consult">
+                        Consult Doctor
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/browseDoctors">
+                        Browse Doctor
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                ) : (
+                    {}
+                )}
+              </Nav>
 
               {this.props.auth.isAuthenticated ? (
-                <NavDropdown
-                  title={<span className="navLink">Doctors</span>}
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item href="/consult">
-                    Consult Doctor
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/browseDoctors">
-                    Browse Doctor
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                {}
-              )}
-            </Nav>
-
-            {this.props.auth.isAuthenticated ? (
-              <NavDropdown
-                title={
-                  <span className="navLink">
+                  <NavDropdown
+                      title={
+                        <span className="navLink">
                     Hello, {user.name.split(" ")[0]}!{" "}
                   </span>
-                }
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/cart">
-                  <i class="fa fa-shopping-cart"></i> Items in your cart
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/history">
-                  <i class="fa fa-server"></i> Your Orders
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/consultations">
-                  <i class="fas fa-hospital"></i> Your Consultations
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={this.onLogoutClick}>
-                  <i class="fa fa-power-off"></i> Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <button
-                type="button"
-                className="btn btn-dark"
-                onClick={this.handleShow}
-              >
-                <i className="fa fa-user userIcon"></i> Sign In
-              </button>
-            )}
-          </Navbar.Collapse>
-        </Navbar>
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Sign In</Modal.Title>
-          </Modal.Header>
+                      }
+                      id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item href="/cart">
+                      <i class="fa fa-shopping-cart"></i> Items in your cart
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/history">
+                      <i class="fa fa-server"></i> Your Orders
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/consultations">
+                      <i class="fas fa-hospital"></i> Your Consultations
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={this.onLogoutClick}>
+                      <i class="fa fa-power-off"></i> Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+              ) : (
+                  <button
+                      type="button"
+                      className="btn btn-dark"
+                      onClick={this.handleShow}
+                  >
+                    <i className="fa fa-user userIcon"></i> Sign In
+                  </button>
+              )}
+            </Navbar.Collapse>
+          </Navbar>
+          <Modal show={this.state.showModal} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Sign In</Modal.Title>
+            </Modal.Header>
 
-          <Modal.Body>
-            <div className="login-form">
-              <form onSubmit={this.onLogin}>
-                <div className="text-center">
-                  <i>
-                    <br />
-                  </i>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
+            <Modal.Body>
+              <div className="login-form">
+                <form onSubmit={this.onLogin}>
+                  <div className="text-center">
+                    <i>
+                      <br />
+                    </i>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
                     <span className="input-group-addon">
                       <i className="fa fa-user"></i>
                     </span>
-                    <input
-                      type="email"
-                      className="form-control"
-                      onChange={this.onLoginChange}
-                      value={this.state.email}
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      required="required"
-                    />
+                      <input
+                          type="email"
+                          className="form-control"
+                          onChange={this.onLoginChange}
+                          value={this.state.email}
+                          id="email"
+                          name="email"
+                          placeholder="Email"
+                          required="required"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
+                  <div className="form-group">
+                    <div className="input-group">
                     <span className="input-group-addon">
                       <i className="fa fa-lock"></i>
                     </span>
-                    <input
-                      type="password"
-                      className="form-control"
-                      onChange={this.onLoginChange}
-                      value={this.state.password}
-                      id="password"
-                      name="password"
-                      placeholder="Password"
-                      required="required"
-                    />
+                      <input
+                          type="password"
+                          className="form-control"
+                          onChange={this.onLoginChange}
+                          value={this.state.password}
+                          id="password"
+                          name="password"
+                          placeholder="Password"
+                          required="required"
+                      />
+                    </div>
                   </div>
+                  {this.state.isErr ? (
+                      <span className="error">{this.state.error}</span>
+                  ) : (
+                      ""
+                  )}
+                  <div className="form-group">
+                    <button
+                        type="submit"
+                        className="btn btn-success btn-block login-btn"
+                    >
+                      Sign in
+                    </button>
+                  </div>
+                </form>
+                <div className="hint-text small">
+                  Don't have an account? <a href="/register">Register Now!</a>
                 </div>
-                {this.state.isErr ? (
-                  <span className="error">{this.state.error}</span>
-                ) : (
-                  ""
-                )}
-                <div className="form-group">
-                  <button
-                    type="submit"
-                    className="btn btn-success btn-block login-btn"
-                  >
-                    Sign in
-                  </button>
-                </div>
-              </form>
-              <div className="hint-text small">
-                Don't have an account? <a href="/register">Register Now!</a>
               </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-      </div>
+            </Modal.Body>
+          </Modal>
+        </div>
     );
   }
 }
@@ -232,5 +235,5 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 export default connect(mapStateToProps, { loginUser, logoutUser })(
-  withRouter(Header)
+    withRouter(Header)
 );

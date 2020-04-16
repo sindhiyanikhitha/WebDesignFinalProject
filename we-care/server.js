@@ -10,6 +10,8 @@ const cart = require("./routes/api/cart");
 const order = require("./routes/api/order");
 const products = require("./routes/api/productsData");
 const postRouter = require("./routes/post-router");
+const charge = require("./routes/api/charge");
+const amount = require("./routes/api/amount");
 const commentRouter = require("./routes/comment-router");
 const globalErrorHandler = require("./src/controller/errorController");
 const cookieParser = require("cookie-parser");
@@ -51,6 +53,8 @@ app.use("/api/users", users);
 app.use("/api/cart", cart);
 app.use("/api/order", order);
 app.use("/api/productsData", products);
+app.use("/api/charge",charge);
+app.use("/api/amount",amount);
 app.use("/api/post", postRouter);
 app.use("/api/comment", commentRouter);
 // For the Routes which are not implemented Yet

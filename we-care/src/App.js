@@ -9,7 +9,7 @@ import Login from "./components/Auth/Login";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Header from "./components/Header/Header";
-import Cart from "./components/cart/cart.component";
+import Cart from "./components/Products/Cart";
 import Blog from "./components/Blog/blog.component";
 import BlogPost from "./components/Blog/BlogSubComponents/BlogPost.component";
 import UserAccount from "./components/Blog/Account/userAccount.component";
@@ -19,6 +19,7 @@ import Orders from "./components/Products/Orders";
 import History from "./components/Products/History";
 import Product from "./components/Products/Product";
 import Products from "./components/Products/Products";
+import Wallet from "./components/Wallet/Wallet";
 import logo from "./logo.svg";
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap";
@@ -47,7 +48,7 @@ class App extends React.Component {
     const { user } = this.props;
     return (
       <div className="App">
-        <Header></Header>
+        <Header/>
         <Switch>
           <Route exact path="/" component={HomePage} />
           {/* <Route path="/product" component={Product} /> */}
@@ -68,9 +69,10 @@ class App extends React.Component {
           <Route path="/consult" component={Consult} />
           <PrivateRoute exact path="/buyNow" component={BuyNow} />
           <PrivateRoute exact path="/cart" component={Cart} />
+          <PrivateRoute path="/wallet" component={Wallet} />
           <Route exact path="/blogPost" component={user ? BlogPost : Login} />
         </Switch>
-        <Footer></Footer>
+        <Footer/>
       </div>
     );
   }
