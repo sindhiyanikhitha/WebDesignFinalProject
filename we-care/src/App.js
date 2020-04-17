@@ -33,6 +33,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import Doctors from "./components/Doctors/Doctors";
 import Consult from "./components/Doctors/Consult";
+import Consultations from "./components/Doctors/Consultations";
+import BrowseDoctors from "./components/Doctors/BrowseDoctors";
 class App extends React.Component {
   async componentDidMount() {
     const script = document.createElement("script");
@@ -61,6 +63,11 @@ class App extends React.Component {
           <PrivateRoute exact path="/cart" component={Cart} />
           <PrivateRoute exact path="/orders" component={Orders} />
           <PrivateRoute exact path="/history" component={History} />
+          <PrivateRoute path="/doctors" component={Doctors} />
+          <PrivateRoute path="/consultations" component={Consultations} />
+          <PrivateRoute path="/consult" component={Consult} />
+          <PrivateRoute path="/consult/doctors" component={Consult} />
+          <Route path="/browseDoctors" component={BrowseDoctors}/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           {/* Will allow only logged in users to access blog and account*/}
