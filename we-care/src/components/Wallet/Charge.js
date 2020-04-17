@@ -16,7 +16,7 @@ import "./StripeElement.css";
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      margin: "8px 10px",
+      margin: "18px 10px",
       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "16px",
@@ -55,7 +55,7 @@ const CheckoutForm = ({ UserId, success }) => {
       try {
         const { data } = await axios.post("/api/charge", {
           id,
-          amount: amountValue * 1000,
+          amount: amountValue * 100,
         });
         if (data) {
           console.log(data);
@@ -89,7 +89,7 @@ const CheckoutForm = ({ UserId, success }) => {
       <form
         id="create-course-form"
         onSubmit={handleSubmit}
-        style={{ maxWidth: "400px", margin: "0 auto" }}
+        style={{ maxWidth: "400px", margin: "0 auto", border: "3px solid #ccc", padding: "15px 10px", marginBottom:"20px" }}
       >
         <input
           type="number"
@@ -132,7 +132,8 @@ const Charge = ({ UserId }) => {
   }
 
   return (
-    <>
+    <><h2 align="center" fontFamily="arial">WALLET <br></br></h2>
+
       <h6 className="h6">Available Balance: ${availableBalance}</h6>
       <Elements stripe={stripePromise}>
         <CheckoutForm

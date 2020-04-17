@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ce3ae988-6119-4ba7-895e-821035d78f9e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ad3Ca6ALHw0cRGIr9mPpGIsNmL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="server.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <package-manager value="npm" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.server.js" />
+      <item itemvalue="npm.start" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce3ae988-6119-4ba7-895e-821035d78f9e" name="Default Changelist" comment="" />
+      <created>1587051517197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587051517197</updated>
+      <workItem from="1587051522940" duration="393000" />
+      <workItem from="1587055788508" duration="2041000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="77" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587051919358">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="77" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1587051919358" />
+    <state x="422" y="96" key="FileChooserDialogImpl" timestamp="1587064110652">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="422" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587064110652" />
+    <state width="1226" height="148" key="GridCell.Tab.0.bottom" timestamp="1587065239247">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1226" height="148" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587065239247" />
+    <state width="1226" height="148" key="GridCell.Tab.0.center" timestamp="1587065239246">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1226" height="148" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587065239246" />
+    <state width="1226" height="148" key="GridCell.Tab.0.left" timestamp="1587065239246">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1226" height="148" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587065239246" />
+    <state width="1226" height="148" key="GridCell.Tab.0.right" timestamp="1587065239247">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1226" height="148" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587065239247" />
+    <state x="438" y="247" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587063894599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="438" y="247" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587063894599" />
+  </component>
+</project>

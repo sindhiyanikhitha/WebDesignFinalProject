@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
                 { user: UserId },
                 {
                     $inc: {
-                        amount: amount/10
+                        amount: amount
                     }
                 }
             )

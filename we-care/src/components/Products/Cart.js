@@ -170,7 +170,7 @@ class Cart extends React.Component {
                     ""
                   )}
                 </strong>
-                {this.tot}= {this.state.cartTotal}
+                
               </p>
               {this.state.cartExists ? (
                   <>
@@ -221,3 +221,4 @@ export default connect(
   mapStateToProps,
   { logoutUser }
 )(Cart);
+//line 173{this.tot}= {this.state.cartTotal}

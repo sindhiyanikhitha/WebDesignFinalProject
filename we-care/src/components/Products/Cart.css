@@ -24,14 +24,14 @@
     margin-left: 5rem;
     min-height: auto;
     border: 0.1rem solid black;
-    padding-left: 4rem;
+    padding-left: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
   
   
   .cart-info .total {
-    font-size: 22px;
+    font-size: 18px;
     color: green;
   }
   
