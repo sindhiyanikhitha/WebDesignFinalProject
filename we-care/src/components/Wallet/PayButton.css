@@ -18,13 +18,16 @@ a.button3:hover{
 
 .myButton {
     box-shadow: 3px 4px 0px 0px #899599;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 70px;
     background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
     background-color:#ededed;
     border-radius:15px;
     border:1px solid #d6bcd6;
     display:inline-block;
     cursor:pointer;
-    color:#3a8a9e;
+    color:black;
     font-family:Arial;
     font-size:17px;
     padding:7px 25px;
@@ -44,13 +47,14 @@ a.button3:hover{
     /*margin: 0 auto;*/
     max-width: 400px;
     margin: 0 auto;
-    padding: 0 0 5px 0;
-    color: #6B5344;
+    margin-top: 10px;
+    padding: 50px 0 5px 0;
+    color: black;
     font-weight: normal;
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif';
+    font-family: '"Helvetica Neue", Helvetica, sans-serif';
     position: relative;
     text-shadow: 0 2px 0 rgba(255,255,255,0.5);
-    font-size: 16px;
+    font-size: 30px;
     line-height: 40px;
 }
 
