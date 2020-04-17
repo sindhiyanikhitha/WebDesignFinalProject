@@ -35,6 +35,7 @@ import Doctors from "./components/Doctors/Doctors";
 import Consult from "./components/Doctors/Consult";
 import Consultations from "./components/Doctors/Consultations";
 import BrowseDoctors from "./components/Doctors/BrowseDoctors";
+import CategoryDescription from "./components/Doctors/CategoryDescription";
 class App extends React.Component {
   async componentDidMount() {
     const script = document.createElement("script");
@@ -67,7 +68,8 @@ class App extends React.Component {
           <PrivateRoute path="/consultations" component={Consultations} />
           <PrivateRoute path="/consult" component={Consult} />
           <PrivateRoute path="/consult/doctors" component={Consult} />
-          <Route path="/browseDoctors" component={BrowseDoctors}/>
+          <Route path="/browseDoctors" component={BrowseDoctors} />
+          <Route path="/describe" component={CategoryDescription} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           {/* Will allow only logged in users to access blog and account*/}

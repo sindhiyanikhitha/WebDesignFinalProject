@@ -16,9 +16,13 @@ router.get("/", (req, res) => {
 
 router.post("/consult", (req, res) => {
   console.log(req.body);
-  Consultation.create(req.body).then((response) => {
-    res.send(response);
-  });
+  Consultation.create(req.body)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.get("/consultations", (req, res) => {
