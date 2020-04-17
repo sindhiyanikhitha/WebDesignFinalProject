@@ -74,8 +74,8 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div> {(this.state.isErr ?
-        (<Alert variant="danger" onClose={() => this.closeErrAlertCart()} dismissible>{this.state.errorMessage}</Alert>)
+      <div>{(this.state.isErr ?
+        (<Alert variant="danger" onClose={() => this.closeErrAlertCart()} dismissible>{this.state.errors.errorMessage}</Alert>)
         : '')}
         {(this.state.onSuccess ?
           (<Alert variant="success" onClose={() => this.closeAlertCart()} dismissible> Success! <Link to="/login">Login</Link> to continue</Alert>)

@@ -106,7 +106,7 @@ class Product extends React.Component {
               </h3>
             </div>
             <hr />
-            <div className="col-md-6">
+            {/* <div className="col-md-6">
               <Form className="m dd">
                 <Form.Group controlId="exampleForm.ControlSelect1">
                   <Form.Label>Select Quantity</Form.Label>
@@ -123,7 +123,7 @@ class Product extends React.Component {
                   </Form.Control>
                 </Form.Group>
               </Form>
-            </div>
+            </div> */}
             <div className="row mt-2 m">
               <h5>
                 Seller: &nbsp; <i>{this.state.products.seller}</i>

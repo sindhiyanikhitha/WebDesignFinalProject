@@ -5,19 +5,19 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer class="footer">
-      <div class="bottom_border">
+      {/* <div class="bottom_border">
         <div class="row divider">
           <div class=" col-sm-4 col-md  col-6 col">
             <h5 class="col_white_footermain pt2">ABOUT</h5>
             <ul class="footer_ul_align">
               <li>
-                <a href="/contact">Contact Us</a>
+                <a href="/">Contact Us</a>
               </li>
               <li>
-                <a href="/aboutus">About Us</a>
+                <a href="/">About Us</a>
               </li>
               <li>
-                <a href="/careers">Careers</a>
+                <a href="/">Careers</a>
               </li>
             </ul>
           </div>
@@ -25,13 +25,13 @@ function Footer() {
             <h5 class="col_white_footermain pt2">HELP</h5>
             <ul class="footer_ul_align">
               <li>
-                <a href="/payments">Payments</a>
+                <a href="/">Payments</a>
               </li>
               <li>
-                <a href="/shipping">Shipping</a>
+                <a href="/">Shipping</a>
               </li>
               <li>
-                <a href="/cancellation">Cancellation & Returns</a>
+                <a href="/">Cancellation & Returns</a>
               </li>
               <li>
                 <a href="/faq">FAQ</a>
@@ -70,20 +70,20 @@ function Footer() {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
       <div class="containerfooter">
         <ul class="foote_bottom_ul_align">
           <li>
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/aboutus">About</a>
+            <a href="/">About</a>
           </li>
           <li>
-            <a href="/services">Services</a>
+            <a href="/">Services</a>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <a href="/">Contact</a>
           </li>
         </ul>
         <p class="text-center">Copyright @ 2020 We Care </p>
