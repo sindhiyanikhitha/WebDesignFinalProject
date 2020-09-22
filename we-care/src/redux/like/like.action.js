@@ -19,10 +19,10 @@ export const getLikesAync = () => {
         method: "GET",
         url: "/api/users/postsLiked",
       });
-      console.log("postsLiked", res);
+      // console.log("postsLiked", res);
       dispatch(getLikesSuccess(res.data.data.posts.postsLiked));
     } catch (err) {
-      console.log(err.stack);
+      // console.log(err.stack);
       dispatch(getLikesFailure(err.message));
     }
   };

@@ -20,7 +20,7 @@ export const sendMail = (mData) => (dispatch) => {
   axios
     .post("/api/newusermail", mData)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
     })
     .catch((err) =>
       dispatch({

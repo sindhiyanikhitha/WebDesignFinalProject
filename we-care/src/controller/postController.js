@@ -37,7 +37,6 @@ exports.createPost = catchAsync(async (req, res, next) => {
   if (!req.body.image && !req.body.caption)
     return next(new AppError(400, "A caption or an image must be provided"));
   if (!req.body.user) req.body.user = req.user["_id"];
-  // console.log(req.body);
   // console.log(req.file);
   if (req.file) req.body.image = req.file.filename;
   const post = await Post.create(req.body);

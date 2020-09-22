@@ -21,7 +21,7 @@ export const getPostsByUserAsync = () => {
       });
       dispatch(getUserPostsSuccess(res.data.data.posts));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       dispatch(getUserPostsFailure(err.message));
     }
   };

@@ -10,7 +10,7 @@ exports.createComment = catchAsync(async (req, res, next) => {
     req.body.post = req.params.id;
   }
   req.body.user = req.user.id;
-  console.log(req.body);
+  // console.log(req.body);
   const comment = await Comment.create(req.body);
   res.status(200).json({
     status: "success",

@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
@@ -36,8 +37,8 @@ app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(xss());
 // DB Config
-const db = require("./config/keys").mongoURI;
-
+// const db = require("./config/keys").mongoURI;
+const db = process.env.ATLAS_URI;
 // console.log(db);
 // Connect to MongoDB
 mongoose
@@ -55,6 +56,7 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
+
 app.use("/api/users", users);
 app.use("/api/cart", cart);
 app.use("/api/order", order);
@@ -65,6 +67,15 @@ app.use("/api/charge", charge);
 app.use("/api/amount", amount);
 app.use("/api/post", postRouter);
 app.use("/api/comment", commentRouter);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/build", "index.html"));
+    // res.json({
+    //   hello: "hello",
+    // });
+  });
+}
 // For the Routes which are not implemented Yet
 app.all("*", (req, res, next) => {
   res.status(404).json({
